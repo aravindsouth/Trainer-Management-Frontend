@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="card mx-auto">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5 bg-light">
+                    <h4 class="text-center bg-dark text-white mb-5">Login</h4>
+                    <div class="container-fluid text-center shadow">
+
+                        <form [formGroup]="loginform">
+                            <span class="input-group-text border-0 bg-light">
+                                <img class="form-label mx-2" src="../assets/icons/email.png" alt="mail-icon" width="16px">
+                                
+                                <input type="email" formControlName="email" 
+                                name="email" id="email" class="form-control my-2" 
+                                placeholder="E-mail" required>
+                            </span>
+
+                            <small *ngIf="loginform.get('email')?.invalid && loginform.get('email')?.touched" 
+                            class="text-danger d-flex justify-content-start">Enter a valid email</small>
+                                                         
+
+                             <span class="input-group-text border-0 bg-light">
+                                <img class="form-label mx-2" src="../assets/icons/lock.png" alt="lock-icon" width="16px">
+                                <input type="password" formControlName="password" 
+                                name="password" id="password" class="form-control my-2" 
+                                placeholder="Password" minlength="8" required>
+
+                                
+                             </span>
+                                                          
+                             <div>
+                                <small *ngIf="loginform.get('password')?.invalid && loginform.get('password')?.touched" 
+                                class="text-danger d-flex justify-content-start">Enter a valid Password</small>
+                             </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block my-4 w-75">Login</button>
+                          
+                            <!-- Register buttons -->
+                            <div class="text-center pb-4">
+                                <p>Want to be a trainer?  
+                                <a routerLink="/signup">Register Here</a>
+                                </p>
+                            </div>
+                          </form>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="../assets/images/online-tutor.jpg" class="card-img" alt="Trainer-banner">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
