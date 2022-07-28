@@ -1,0 +1,28 @@
+.enroll-form{
+    padding-top:50px;
+    padding-left: 250px;   
+    padding-bottom: 20px;
+    
+}
+.form-border{
+    padding: 40px;
+    border: 1px solid gainsboro;
+    width:55%;
+}
+.form-control.ng-touched.ng-invalid{
+    border-left: 5px solid red;
+}
+.form-control.ng-touched.ng-valid{
+    border-left: 5px solid green;
+}
+.btn-pos{
+    text-align: center;
+}
+.card-left{
+   padding-top: 150px;
+   text-align: center;
+   color: white;
+   padding-left: 20px;
+   padding-right: 20px;
+   
+}

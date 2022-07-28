@@ -1,0 +1,95 @@
+<div class="enroll-form row">
+
+  <div class="card bg-primary card-left" style="width: 18rem;" data-aos="fade-right">
+    <h3>TRAINER ENROLLMENT FORM</h3>
+      <br>
+    <img src="../../assets/bgimages/train.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <!-- <h5>Build Your Profile </h5> -->
+      <br>
+      <p class="card-text">This information will let us know more about you.</p>
+    </div>
+  </div>
+
+  <div class="card form-border " data-aos="fade-left">
+    <form [formGroup]="enroll_form" (ngSubmit)="enrollSubmit()">
+      <br>
+      <div class="row mb-3">
+        <label for="t_id" class="col-sm-4 col-form-label ">Trainer ID</label>
+        <div class="col-sm-7">
+          <input class="form-control" type="text" name="t_id" formControlName="t_id" readonly>
+        </div>
+      </div>
+        <div class="row mb-3">
+            <label for="fname" class="col-sm-4 col-form-label ">FullName</label>
+            <div class="col-sm-7">
+              <input class="form-control" type="text" name="fname" formControlName="fname" readonly>  
+            </div>
+          </div>
+        <div class="row mb-3">
+          <label for="email" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-7">
+            <input class="form-control" type="email" name="email" formControlName="email" readonly>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="phone" class="col-sm-4 col-form-label">Phone</label>
+          <div class="col-sm-7">
+            <input class="form-control" type="text" name="phone" formControlName="phone" readonly>
+          </div>
+        </div>
+        <div class="row mb-3">
+            <label for="address" class="col-sm-4 col-form-label">Address</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" id="address" rows="3" name="address" formControlName="address"></textarea>
+                <small *ngIf= "address?.invalid  && address?.touched" class="text-danger">Address required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="photo" class="col-sm-4 col-form-label">Photo</label>
+            <div class="col-sm-7">
+                <input (change)="onImageChangeFromFile($event)" class="form-control" type="file" id="formFile" name="photo" formControlName="photo" >
+                <small *ngIf= "photo?.invalid  && photo?.touched" class="text-danger">Photo required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="hqual" class="col-sm-4 col-form-label">Highest Qualification</label>
+            <div class="col-sm-7">
+              <input class="form-control" type="text" name="hqual" formControlName="hqual" readonly>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="skills" class="col-sm-4 col-form-label">Skill Set</label>
+            <div class="col-sm-7">
+              <textarea class="form-control" id="skills" rows="3" name="skills" formControlName="skills"></textarea>
+              <small *ngIf= "skills?.invalid  && skills?.touched" class="text-danger">Skills required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="company" class="col-sm-4 col-form-label">Current Company</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="company" name="company" formControlName="company">
+              <small *ngIf= "company?.invalid  && company?.touched" class="text-danger">Company name required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="desig" class="col-sm-4 col-form-label">Current Designation</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="desig" name="desig" formControlName="desig">
+              <small *ngIf= "desig?.invalid  && desig?.touched" class="text-danger">Current designation required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="courses" class="col-sm-4 col-form-label">Courses Handling</label>
+            <div class="col-sm-7">
+             
+            </div>
+          </div>
+          <div class="btn-pos">
+            <button [disabled]="enroll_form.invalid" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+      </form>
+    </div> 
+
+</div>
+
