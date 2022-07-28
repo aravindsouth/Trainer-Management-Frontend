@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +8,36 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
   loginform!: FormGroup;
+  submitted = false; // Boolean variable to say the form is not submitted
+
+  constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
     
     /*---------- Login form Validation using reactive forms ------- */
-    this.loginform = new FormGroup({
-      'email' : new FormControl(null, [Validators.required, Validators.email]),
-      'password' : new FormControl(null, Validators.required)
-    });
+    this.loginform = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    })
+
+ 
   }
+
+  login() {
+    this.submitted = true;
+
+    if(this.loginform.invalid){
+      console.log(this.loginform.controls);
+      
+      return;
+    }
+
+    else {
+      console.log('Success');
+      console.log(this.loginform.controls);
+    }
+  }
+  
 
 }

@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
+import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 
 
 
@@ -14,7 +15,8 @@ import { HeaderComponent } from './header/header.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    routingComponents
+    routingComponents,
+    TrainerDashboardComponent
   ],
   imports: [
     BrowserModule,

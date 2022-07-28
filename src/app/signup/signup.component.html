@@ -6,50 +6,88 @@
         </div>
 
         <div class="card-body bg-light mx-5">
-            <form [formGroup]="registerform">
+            
+            <!-- ---------- Form starts here --------  -->
+
+            <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
+
+                <!-- FULL NAME -->
                 <div class="form-group">
                     <label class="mt-3" for="fname">Full Name(as in SSLC Certificate)</label>
-                    <input class="form-control" formControlName="fname"
+                    <input class="form-control" formControlName="fname" 
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.fname.errors }"
                     type="text" name="fname" id="fname" required>
+                    <!-- 'submitted' variable is decalred in ts file -->
+                    
 
-                    <small *ngIf="registerform.get('fname')?.invalid && registerform.get('fname')?.touched" 
-                    class="text-danger d-flex justify-content-start">Enter a valid Name</small>
+                    <!-- Full name - error messages -->
+                    <div *ngIf="submitted && registerform.controls.fname.errors">
+                        <small *ngIf="submitted && registerform.controls.fname.errors.required"
+                        class="text-danger d-flex justify-content-start">Field cannot be empty</small>
+
+                        <small *ngIf="submitted && registerform.controls.fname.errors.minlength"
+                        class="text-danger d-flex justify-content-start">Too short</small>
+
+                        <small *ngIf="submitted && registerform.controls.fname.errors.pattern"
+                        class="text-danger d-flex justify-content-start">Name shouldn't contain digits</small>
+                    </div>
                 </div>
 
+                <!-- DATE OF BIRTH -->
                 <div class="form-group">
                     <label class="mt-3" for="dob">Date of Birth</label>
                     <input class="form-control" formControlName="dob"
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.dob.errors }"
                     type="date" name="dob" id="dob" min="1985-01-01" max="2002-01-01" required>
 
-                    <small *ngIf="registerform.get('dob')?.invalid && registerform.get('dob')?.touched" 
+                    <!-- Date of Birth - error message -->
+                    <small *ngIf="submitted && registerform.controls.dob.errors"
                     class="text-danger d-flex justify-content-start">Enter a valid date</small>
+                    
                 </div>
 
-
+                <!-- EMAIL -->
                 <div class="form-group">
                     <label class="mt-3" for="email">Email</label>
                     <input class="form-control" formControlName="email"
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.email.errors }"
                     type="email" name="email" id="email" required> 
                     
-                    <small *ngIf="registerform.get('email')?.invalid && registerform.get('email')?.touched" 
-                    class="text-danger d-flex justify-content-start">Enter a valid Email</small>
+                    <!-- Email - error message -->
+                    <div *ngIf="submitted && registerform.controls.email.errors">
+                        <small *ngIf="submitted && registerform.controls.email.errors.required"
+                        class="text-danger d-flex justify-content-start">Field cannot be empty</small>
+
+                        <small *ngIf="submitted && registerform.controls.email.errors.email"
+                        class="text-danger d-flex justify-content-start">Enter valid Email</small>
+                    </div>
+                    
                 </div>
 
+                <!-- MOBILE NUMBER -->
                 <div class="form-group">
                     <label class="mt-3" for="mobile">Phone No.</label>
                     <input class="form-control" formControlName="mobile"
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.mobile.errors }"
                     type="tel" name="mobile" id="mobile" required>
                     
-                    <small *ngIf="registerform.get('mobile')?.invalid && registerform.get('mobile')?.touched" 
-                    class="text-danger d-flex justify-content-start">Enter a valid Phone No.</small>
+                    <!-- Mobile Number - error messages -->
+                    <div *ngIf="submitted && registerform.controls.mobile.errors">
+                        <small *ngIf="submitted && registerform.controls.mobile.errors.required"
+                        class="text-danger d-flex justify-content-start">Field cannot be empty</small>
+
+                        <small *ngIf="submitted && registerform.controls.mobile.errors.pattern"
+                        class="text-danger d-flex justify-content-start">Enter valid phone number</small>
+                    </div>
                 </div>
 
                 <div class="form-group">        
                     <label class="mt-3" for="hqual">Highest Qualification</label>
                     <input class="form-control" formControlName="hqual"
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.hqual.errors }"
                     type="text" name="hqual" id="hqual" required>
                     
-                    <small *ngIf="registerform.get('hqual')?.invalid && registerform.get('hqual')?.touched" 
+                    <small  *ngIf="submitted && registerform.controls.hqual.errors"
                     class="text-danger d-flex justify-content-start">Field cannot be empty</small>
                 </div>
 
@@ -57,22 +95,24 @@
                     <label class="mt-3" for="password">Choose a Password</label>
 
                     <input class="form-control" formControlName="password"
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.password.errors }"
                     type="password" name="password" id="password" minlength="8" required>
 
-                    <small *ngIf="registerform.get('password')?.invalid && registerform.get('password')?.touched" 
+                    <small  *ngIf="submitted && registerform.controls.password.errors"
                     class="text-danger d-flex justify-content-start">Enter valid Password</small>
                 </div>
 
                 <div class="form-group">        
                     <label class="mt-3" for="cpassword">Confirm Password</label>
                     <input class="form-control" formControlName="cpassword"
+                    [ngClass]="{'is-invalid':submitted  && registerform.controls.cpassword.errors }"
                     type="password" name="cpassword" id="cpassword" required
                     (keyup)="checkPassword()">        
                 </div>
 
-                <div class="form-group d-flex justify-content-around my-4">
-                    <button type="button" class="btn btn-secondary" (click)="goHome()">Close</button>
-                    <button type="submit" class="btn btn-success w-25" (click)="onSubmit()">Enrol</button>
+                <div class="form-group d-flex justify-content-around my-4 w">
+                    <button type="button" class="btn btn-secondary shadow" (click)="goHome()">Close</button>
+                    <button type="submit" class="btn btn-success w-auto px-4 shadow">Enrol</button>
                 </div>
             </form>
         </div>
