@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "Trainer_Management_Frontend"
+  "defaultProject": "Trainer_Management_Frontend",
+  "cli": {
+    "analytics": "3db5950d-dc36-4cf0-b660-9b06e71ea986"
+  }
 }
