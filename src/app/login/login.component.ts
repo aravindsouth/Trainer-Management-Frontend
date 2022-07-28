@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +8,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
 
-  loginform!: FormGroup;
+  loginform!: UntypedFormGroup;
   submitted = false; // Boolean variable to say the form is not submitted
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:UntypedFormBuilder) { }
 
   ngOnInit(): void {
     

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -9,10 +9,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignupComponent implements OnInit {
 
-  registerform!: FormGroup;
+  registerform!: UntypedFormGroup;
   submitted = false; // Boolean variable to say the form is not submitted
 
-  constructor(private _router:Router, private formBuilder:FormBuilder) { }
+  constructor(private _router:Router, private formBuilder:UntypedFormBuilder) { }
 
   ngOnInit(): void {
 

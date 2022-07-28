@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@100;200;300;400;500; 600;700; 800;900&display=swap');
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+width: 100%;
+background: #d8d9db;
+position: relative;
+display: flex;
+}
+
+
+#interface{
+    width: calc(100% - 300px);
+}
+#interface .navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 20px 30px;
+    border-bottom: 3px solid #594ef7;
+}
+#interface .navigation .search{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid #d7dbe6;
+    border-radius: 4px;
+}
+#interface .navigation .search svg{
+    margin-right: 14px;
+}
+#interface .navigation .search input{
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+#interface .navigation .profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#interface .navigation .profile svg{
+    margin-right: 20px;
+    font-size: 19px;
+    font-weight: 400;
+}
+.i-name{
+    color: #444a53;
+    padding: 30px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+.values{
+    padding: 25px 25px 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: flex;
+}
+.values .val-box{
+    background: rgb(251, 250, 253);
+    border-style: solid;
+    width: 235px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: block;
+    justify-content: flex-start;
+    align-items: center;
+}
+.values .val-box svg{
+    font-size: 25px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: centre;
+    color: rgb(202, 192, 239);
+    margin-right: 15px;
+}
+.values .val-box:nth-child(1) svg{
+    background: #594ef7; 
+}
+.values .val-box:nth-child(2) svg{
+    background: #4eaef7; 
+}
+.values .val-box:nth-child(2) svg{
+    background: #974ef7; 
+}
+.values .val-box:nth-child(3) svg{
+    background: #2b7dc0; 
+}
+.values .val-box:nth-child(4) svg{
+    background: #36AE7C; 
+}
+.values .val-box:nth-child(5) svg{
+    background: #f74b4b; 
+}
+.values .val-box h3 {
+     font-size: 18px; 
+     font-weight: 600;
+ } 
+.values .val-box span{
+    
+    font-size: 15px;
+    color: #828997;
+    }
