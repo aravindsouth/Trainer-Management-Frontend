@@ -12,17 +12,17 @@
                                 
                                 <input type="email" formControlName="email" 
                                 name="email" id="email" class="form-control my-2" 
-                                [ngClass]="{'is-invalid':submitted  && loginform.controls.email.errors }"
+                                [ngClass]="{ 'is-invalid': submitted && loginform.controls.email.errors }"
                                 placeholder="E-mail" required>
                                 
                             </span>
-                            
-                            
-                            <div class="d-flex justify-content-end" *ngIf="submitted && loginform.controls.email.errors && (loginform.controls.email.touched || loginform.controls.email.dirty)">
-                                    <small *ngIf="submitted && loginform.controls.email.errors.required" 
+                                                        
+                            <div class="d-flex justify-content-end" *ngIf="loginform.controls.email.errors &&
+                            loginform.controls.email.touched">
+                                    <small *ngIf="loginform.controls.email.errors.required" 
                                     class="text-danger d-flex justify-content-start">Cannot be empty</small>
     
-                                    <small *ngIf="submitted && loginform.controls.email.errors.email" 
+                                    <small *ngIf="loginform.controls.email.touched && loginform.controls.email.errors.email" 
                                     class="text-danger d-flex justify-content-start">Not a valid email</small>
                                 </div>    
                             
@@ -31,23 +31,24 @@
                                 <img class="form-label mx-2" src="../assets/icons/lock.png" alt="lock-icon" width="16px">
                                 
                                 <input type="password" formControlName="password" 
-                                [ngClass]="{'is-invalid':submitted  && loginform.controls.password.errors}"
+                                [ngClass]="{'is-invalid':submitted && loginform.controls.password.errors}"
                                 name="password" id="password" class="form-control my-2" 
                                 placeholder="Password" minlength="8" required>
 
                                 
                              </span>
                                                           
-                             <div class="d-flex justify-content-end" *ngIf="submitted && loginform.controls.password.errors && (loginform.controls.password.touched || loginform.controls.password.dirty)">
-                                <small *ngIf="submitted && loginform.controls.password.errors.required" 
+                             <div class="d-flex justify-content-end" *ngIf="loginform.controls.password.errors &&
+                             loginform.controls.password.touched">
+                                <small *ngIf="loginform.controls.password.errors.required" 
                                 class="text-danger d-flex justify-content-start">Cannot be empty</small>
 
-                                <small *ngIf="submitted && loginform.controls.password.errors.minlength" 
+                                <small *ngIf="loginform.controls.password.errors.minlength" 
                                 class="text-danger d-flex justify-content-start">Need at least 8 characters</small>
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block my-4 w-75">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block my-4 w-75" [disabled]="!loginform.valid">Login</button>
                           
                             <!-- Register buttons -->
                             <div class="text-center pb-4">

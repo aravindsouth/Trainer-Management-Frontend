@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+
 import { HeaderComponent } from './header/header.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 
@@ -22,7 +24,8 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShowHidePasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent],

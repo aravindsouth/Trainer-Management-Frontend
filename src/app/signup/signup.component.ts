@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -29,12 +29,12 @@ export class SignupComponent implements OnInit {
     // });
 
     this.registerform = this.formBuilder.group({ 
-      fname: ['', [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z ]*$')]],
+      fname: ['', [Validators.required, Validators.minLength(4), Validators.pattern(/^[a-zA-Z ]*$/)]],
       dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.pattern('^[6-9]\d{9}$/gi')]],
+      mobile: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
       hqual: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm)]],
       cpassword: ['', Validators.required]
 
     })
@@ -55,7 +55,8 @@ export class SignupComponent implements OnInit {
       console.log("password dont match");
     }
     else{
-      console.log("match")
+      console.log("match");
+      
     }
 
   }
