@@ -20,6 +20,10 @@
     "@angular/router": "^14.1.0",
     "aos": "^2.3.4",
     "ng-multiselect-dropdown": "^1.0.0-beta.19",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "ngx-show-hide-password": "^2.6.4",
+
     "rxjs": "~7.5.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
