@@ -24,6 +24,6 @@ export const routingComponents = [
   LoginComponent,
   SignupComponent,
   TrainerDashboardComponent,
-  AdminDashboardComponent
+  AdminDashboardComponent,
   TrainerListComponent
  ]
