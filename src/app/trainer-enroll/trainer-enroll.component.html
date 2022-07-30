@@ -1,0 +1,102 @@
+<div class="enroll-form ">
+
+   <div class="shadow p-3 mb-5 bg-body rounded w-75 p-3" data-aos="zoom-in">
+   
+    <div class="heading">
+      <h3 class="p-3 mb-2 bg-warning text-white">TRAINER ENROLLMENT FORM</h3>
+      <p class="card-text">This information will let us know more about you</p>
+    </div>
+
+   <div class="form-body">  
+    <form [formGroup]="enroll_form" (ngSubmit)="enrollSubmit()">
+      <div class="row mb-3">
+        <label for="t_id" class="col-sm-4 col-form-label ">Trainer ID</label>
+        <div class="col-sm-8">
+          <input class="form-control" type="text" name="t_id" formControlName="t_id" readonly>
+        </div>
+      </div>
+        <div class="row mb-3">
+            <label for="fname" class="col-sm-4 col-form-label ">FullName</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" name="fname" formControlName="fname" readonly>  
+            </div>
+          </div>
+        <div class="row mb-3">
+          <label for="email" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-8">
+            <input class="form-control" type="email" name="email" formControlName="email" readonly>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="phone" class="col-sm-4 col-form-label">Phone No.</label>
+          <div class="col-sm-8">
+            <input class="form-control" type="text" name="phone" formControlName="phone" readonly>
+          </div>
+        </div>
+        <div class="row mb-3">
+            <label for="address" class="col-sm-4 col-form-label">Address</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" id="address" rows="3" name="address" formControlName="address"></textarea>
+                <small *ngIf= "address?.invalid  && address?.touched" class="text-danger">Address required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="photo" class="col-sm-4 col-form-label">Upload Photo</label>
+            <div class="col-sm-8"> 
+                <input (change)="onImageChangeFromFile($event)" class="form-control" type="file" id="formFile" name="photo" formControlName="photo" >
+                <small *ngIf= "photo?.hasError('required')" class="text-danger">Photo should be in JPEG format</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="hqual" class="col-sm-4 col-form-label">Highest Qualification</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" name="hqual" formControlName="hqual" readonly>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="skills" class="col-sm-4 col-form-label">Skills</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" id="skills" rows="3" name="skills" formControlName="skills"></textarea>
+              <small *ngIf= "skills?.invalid  && skills?.touched" class="text-danger">Skills required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="company" class="col-sm-4 col-form-label">Current Company Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="company" name="company" formControlName="company">
+              <small *ngIf= "company?.invalid  && company?.touched" class="text-danger">Company name required</small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="desig" class="col-sm-4 col-form-label">Current Designation</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="desig" name="desig" formControlName="desig">
+              <small *ngIf= "desig?.invalid  && desig?.touched" class="text-danger">
+                <small *ngIf= "desig?.hasError('required')" class="text-danger">Current designation required</small>
+              <small *ngIf= "desig?.hasError('pattern')" class="text-danger">Should not contain digits or special characters</small>
+              </small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="courses" class="col-sm-4 col-form-label">ICTAK Courses Handling</label>
+            <div class="col-sm-8">
+              
+              <ng-multiselect-dropdown name="courses" formControlName="courses"
+              [placeholder]="'Select Courses'"
+              [settings]= "dropdownSettings"
+              [data]= "dropdownList"
+              (onSelect)= "onItemSelect($event)"
+               >
+            </ng-multiselect-dropdown>
+            <small *ngIf= "courses?.invalid  && courses?.touched" class="text-danger">Select atleast one course</small>
+            </div>
+          </div>
+          <div class="btn-pos">
+            <button [disabled]="enroll_form.invalid" type="submit" class="btn btn-warning">Submit</button>
+          </div>
+      </form>
+    </div>
+    </div> 
+
+</div>
+
