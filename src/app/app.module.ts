@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 
 
@@ -18,7 +19,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     HeaderComponent,
     routingComponents,
     TrainerDashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    TrainerListComponent
   ],
   imports: [
     BrowserModule,
