@@ -9,7 +9,7 @@
             
             <!-- ---------- Form starts here --------  -->
 
-            <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
+            <form [formGroup]="registerform" (ngSubmit)="onSubmit(registerform.value)">
 
                 <!-- FULL NAME -->
                 <div class="form-group">
