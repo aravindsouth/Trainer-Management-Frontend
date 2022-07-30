@@ -6,7 +6,7 @@
                     <h4 class="text-center bg-dark text-white mb-5">Login</h4>
                     <div class="container-fluid text-center shadow">
 
-                        <form [formGroup]="loginform" (ngSubmit)="login()">
+                        <form [formGroup]="loginform" (ngSubmit)="login(loginform.value)">
                             <span class="input-group-text border-0 bg-light">
                                 <img class="form-label mx-2" src="../assets/icons/email.png" alt="mail-icon" width="16px">
                                 

@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { TokenInterceptorService } from './token-interceptor.service';
+
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { HeaderComponent } from './header/header.component';
@@ -25,9 +29,15 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ShowHidePasswordModule
+    ShowHidePasswordModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, TokenInterceptorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

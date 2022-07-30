@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   registerform!: FormGroup;
   submitted = false; // Boolean variable to say the form is not submitted
 
-  constructor(private _router:Router, private formBuilder:FormBuilder) { }
+  constructor(private _router:Router, private formBuilder:FormBuilder, private _auth: AuthService) { }
 
   ngOnInit(): void {
 
@@ -61,17 +62,48 @@ export class SignupComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    this.submitted = true;
+  // onSubmit() {
+  //   this.submitted = true;
 
-    if(this.registerform.invalid){
-      console.log(this.registerform);
-      return;
-    }
+  //   if(this.registerform.invalid){
+  //     console.log(this.registerform);
+  //     return;
+  //   }
 
-    else {
-      alert("Your information have been forwarded to the admin. The status of your enrolment will be informed via Email you have provided.");
+  //   else {
+  //     alert("Your information have been forwarded to the admin. The status of your enrolment will be informed via Email you have provided.");
+  //   }
+  // }
+
+  onSubmit(value: any) {
+    const trainer = {
+      email: value.email,
+      password: value.password,
+      fname: value.fname,
+      dob: value.dob,
+      mobile: value.mobile,
+      hqual: value.hqual
     }
-  }
+    console.log(value);
+    console.log(trainer)
+    this._auth.trainerSignUp(trainer)
+    .subscribe((data) =>{
+      let status = data.status
+      console.log(status)
+      console.log(data.reason)
+      // this._router.navigate(['login'])
+      // alert('New user added')
+      if (!status) {
+        alert("User already exists")
+        this._router.navigate(["/signup"])
+        window.location.reload();
+      }
+      else {
+        console.log("new user added")
+        this._router.navigate(["/login"])
+      }
+    })
+  
+   }
 
 }

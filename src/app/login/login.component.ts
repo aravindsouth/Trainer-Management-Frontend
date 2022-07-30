@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginform!: FormGroup;
   submitted = false; // Boolean variable to say the form is not submitted
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
     
@@ -24,20 +26,31 @@ export class LoginComponent implements OnInit {
  
   }
 
-  login() {
-    this.submitted = true;
+  // login() {
+  //   this.submitted = true;
 
-    if(this.loginform.invalid){
-      console.log(this.loginform.controls);
+  //   if(this.loginform.invalid){
+  //     console.log(this.loginform.controls);
       
-      return;
-    }
+  //     return;
+  //   }
 
-    else {
-      console.log('Success');
-      console.log(this.loginform.controls);
-    }
-  }
-  
+  //   else {
+  //     console.log('Success');
+  //     console.log(this.loginform.controls);
+  //   }
+  // }
+
+  login(value: any) {
+    this.submitted = true;
+    this._auth.loginUser(value)
+    .subscribe(
+      res => {
+        localStorage.setItem('token', res.token);
+        this._router.navigate(['trainer-dashboard']);
+        console.log(res.error)
+      }
+    )
+  }  
 
 }
