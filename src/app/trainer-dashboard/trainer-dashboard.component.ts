@@ -18,4 +18,5 @@ export class TrainerDashboardComponent implements OnInit {
     this._router.navigate(["/login"]);
   }
 
+
 }

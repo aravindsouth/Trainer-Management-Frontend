@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
   // }
 
   login(value: any) {
-    this.submitted = true;
     this._auth.loginUser(value)
     .subscribe(
       res => {
@@ -51,6 +50,8 @@ export class LoginComponent implements OnInit {
         console.log(res.error)
       }
     )
-  }  
+
+  }
+  
 
 }
