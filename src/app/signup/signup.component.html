@@ -126,7 +126,9 @@
                     <input class="form-control" formControlName="cpassword"
                     [ngClass]="{'is-invalid':submitted  && registerform.controls.cpassword.errors }"
                     type="password" name="cpassword" id="cpassword" required
-                    (keyup)="checkPassword()">        
+                    (keyup)="checkPassword()">
+                    
+                    <small class="text-secondary text-muted"> {{rpassmsg}} </small>
                 </div>
 
                 <div class="form-group d-flex justify-content-around my-4 w">

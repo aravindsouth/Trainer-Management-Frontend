@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit {
 
   registerform!: FormGroup;
   submitted = false; // Boolean variable to say the form is not submitted
+
+  rpassmsg = "";
 
   constructor(private _router:Router, private formBuilder:FormBuilder, private _auth: AuthService) { }
 
@@ -51,13 +53,17 @@ export class SignupComponent implements OnInit {
   /* ------ PASSWORD MATCH CHECK ------- */
   checkPassword() {
     const pass = this.registerform.get('password')?.value;
-    const rpass = this.registerform.get('cpassword')?.value
+    const rpass = this.registerform.get('cpassword')?.value;
+    
+        
     if(pass !== rpass){
       console.log("password dont match");
+      this.rpassmsg = "Passwords don't match";
+
     }
     else{
       console.log("match");
-      
+      this.rpassmsg = "Passwords Match";      
     }
 
   }
