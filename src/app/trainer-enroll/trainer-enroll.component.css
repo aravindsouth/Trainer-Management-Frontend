@@ -1,0 +1,29 @@
+.enroll-form{
+    padding-top:50px;
+    padding-left: 300px;   
+    padding-bottom: 20px;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border-left: 5px solid red;
+}
+.form-control.ng-touched.ng-valid{
+    border-left: 5px solid green;
+}
+.btn-pos{
+    text-align: center; 
+    padding-top: 10px;
+}
+.btn{
+    color: white;
+}
+.heading{ 
+    padding: 30px;
+    text-align: center;
+}
+.form-body{
+    padding: 30px;
+}
+p{
+    color: darkblue;
+}

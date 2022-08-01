@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/aos/dist/aos.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -102,5 +103,7 @@
       }
     }
   },
-  "defaultProject": "Trainer_Management_Frontend"
+  "cli": {
+    "analytics": false
+  }
 }
