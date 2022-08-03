@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 body{
     border: 0;
+    font-family: 'Poppins',sans-serif;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border-left: 5px solid red;
+}
+.form-control.ng-touched.ng-valid{
+    border-left: 5px solid green;
 }
 
 .required-field:after {
@@ -8,5 +17,6 @@ body{
 }
 
 #passmsg {
-    display: none;
+    display: initial;
 }
+

@@ -1,8 +1,11 @@
+<app-header></app-header> <!-- Header Component -->
+
 <div class="container-fluid">
-    <div class="card mx-auto">
+    
+    <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-5 bg-light">
+                <div class="col-md-5 bg-light fade-in">
                     <h4 class="text-center bg-dark text-white mb-5">Login</h4>
                     <div class="container-fluid text-center shadow">
 
@@ -11,20 +14,22 @@
                                 <img class="form-label mx-2" src="../assets/icons/email.png" alt="mail-icon" width="16px">
                                 
                                 <input type="email" formControlName="email" 
-                                name="email" id="email" class="form-control my-2" 
+                                name="email" id="email" class="form-control mt-2" 
                                 [ngClass]="{ 'is-invalid': submitted && loginform.controls.email.errors }"
                                 placeholder="E-mail" required>
                                 
                             </span>
                                                         
-                            <div class="d-flex justify-content-end" *ngIf="loginform.controls.email.errors &&
+                            <div class="text-danger" *ngIf="loginform.controls.email.errors &&
                             loginform.controls.email.touched">
-                                    <small *ngIf="loginform.controls.email.errors.required" 
-                                    class="text-danger d-flex justify-content-start">Cannot be empty</small>
+                                    <small *ngIf="loginform.controls.email.errors.required">
+                                        Cannot be empty
+                                    </small>
     
-                                    <small *ngIf="loginform.controls.email.touched && loginform.controls.email.errors.email" 
-                                    class="text-danger d-flex justify-content-start">Not a valid email</small>
-                                </div>    
+                                    <small *ngIf="loginform.controls.email.touched && loginform.controls.email.errors.email">
+                                        Not a valid email
+                                    </small>
+                            </div>    
                             
 
                              <span class="input-group-text border-0 bg-light">
@@ -32,19 +37,21 @@
                                 
                                 <input type="password" formControlName="password" 
                                 [ngClass]="{'is-invalid':submitted && loginform.controls.password.errors}"
-                                name="password" id="password" class="form-control my-2" 
-                                placeholder="Password" minlength="8" required>
+                                name="password" id="password" class="form-control mt-2" 
+                                placeholder="Password" minlength="8" maxlength="20" required>
 
                                 
                              </span>
                                                           
-                             <div class="d-flex justify-content-end" *ngIf="loginform.controls.password.errors &&
+                             <div class="text-danger" *ngIf="loginform.controls.password.errors &&
                              loginform.controls.password.touched">
-                                <small *ngIf="loginform.controls.password.errors.required" 
-                                class="text-danger d-flex justify-content-start">Cannot be empty</small>
+                                <small *ngIf="loginform.controls.password.errors.required">
+                                    Cannot be empty
+                                </small>
 
-                                <small *ngIf="loginform.controls.password.errors.minlength" 
-                                class="text-danger d-flex justify-content-start">Need at least 8 characters</small>
+                                <small *ngIf="loginform.controls.password.errors.minlength">
+                                    Need at least 8 characters
+                                </small>
                             </div>
 
                             <!-- Submit button -->
@@ -61,7 +68,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <img src="../assets/images/online-tutor.jpg" class="card-img" alt="Trainer-banner">
+                    <img src="../assets/images/online-tutor.jpg" class="img-thumbnail" alt="Trainer-banner">
                 </div>
             </div>
         </div>

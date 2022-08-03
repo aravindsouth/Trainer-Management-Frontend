@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import * as AOS from 'aos';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
@@ -18,6 +19,7 @@ export class SignupComponent implements OnInit {
   constructor(private _router:Router, private formBuilder:FormBuilder, private _auth: AuthService) { }
 
   ngOnInit(): void {
+    AOS.init();
 
     /* ---------- Registration form validation -------------- */
 
