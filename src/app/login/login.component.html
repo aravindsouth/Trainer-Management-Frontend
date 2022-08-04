@@ -36,7 +36,7 @@
                                 <img class="form-label mx-2" src="../assets/icons/lock.png" alt="lock-icon" width="16px">
                                 
                                 <input type="password" formControlName="password" 
-                                [ngClass]="{'is-invalid':submitted && loginform.controls.password.errors}"
+                                [ngClass]="{ 'is-invalid':submitted && loginform.controls.password.errors }"
                                 name="password" id="password" class="form-control mt-2" 
                                 placeholder="Password" minlength="8" maxlength="20" required>
 

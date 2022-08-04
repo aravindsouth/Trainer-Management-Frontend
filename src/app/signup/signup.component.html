@@ -20,8 +20,9 @@
                     <label class="required-field col-sm-4 col-form-label" for="fname">Full Name</label>
                     
                     <div class="col-sm-8">
-                        <input class="form-control" formControlName="fname" 
-                        [ngClass]="{'is-invalid':submitted  && registerform.controls.fname.errors }"
+                        <input class="form-control" formControlName="fname"
+                        (keydown)="noFirstSpace($event)" 
+                        [ngClass]="{ 'is-invalid':submitted  && registerform.controls.fname.errors }"
                         type="text" name="fname" id="fname" required>
                         <!-- 'submitted' variable is decalred in ts file -->
                         
@@ -107,11 +108,17 @@
                     
                     <div class="col-sm-8">
                         <input class="form-control" formControlName="hqual"
+                        (keydown)="noFirstSpace($event)" 
                         [ngClass]="{'is-invalid':submitted  && registerform.controls.hqual.errors }"
                         type="text" name="hqual" id="hqual" required>
                         
-                        <small  *ngIf="registerform.controls.hqual.errors && registerform.controls.hqual.touched"
-                        class="text-danger d-flex justify-content-start">Field cannot be empty</small>
+                        <div *ngIf="registerform.controls.hqual.errors && registerform.controls.hqual.touched">
+                            <small  *ngIf="registerform.controls.hqual.errors.minlength"
+                            class="text-danger d-flex justify-content-start">Too short</small>
+
+                            <small  *ngIf="registerform.controls.hqual.errors?.required"
+                            class="text-danger d-flex justify-content-start">Field cannot be empty</small>
+                        </div>
 
                     </div>
                     
@@ -134,21 +141,26 @@
                     
                     <div class="col-sm-8">
                         <show-hide-password class="form-label" [btnOutline]="false">
-                            <input class="form-control" formControlName="password"
+                            <input class="form-control" formControlName="password" #pwd
+                            (keyup)="isPasswordStrong()"
                             [ngClass]="{'is-invalid':submitted  && registerform.controls.password.errors }"
                             type="password" name="password" id="password" minlength="8" maxlength="20" required>
                         </show-hide-password>
                                             
                         <small  *ngIf="registerform.controls.password.errors && registerform.controls.password.touched"
                         class="text-danger d-flex justify-content-start">Enter valid Password</small>
-    
-                        <div class="password-strength-meter text-center">
+                        
+                        <!-- Password strength meter here -->
+                        <div class="password-str-meter text-center" #pwdmeter>
                             
-                            <!-- Password strength message here -->
-                            <small id="passmsg">Strength Message here</small>
-    
-                            <!-- Password strength meter here -->
-                            <span id="str-meter"></span>
+                            <div class="indicator" #pwdindicator>
+                                <span class="weak" #pwdweak></span>
+                                <span class="medium mx-1" #pwdmedium></span>
+                                <span class="strong" #pwdstrong></span>
+                            </div>
+                            <div class="strength-text" #pwdstrtext>
+                                Your Password is too weak
+                            </div>
                         </div>
 
                     </div>

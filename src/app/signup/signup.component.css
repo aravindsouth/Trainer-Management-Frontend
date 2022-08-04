@@ -1,7 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-body{
-    border: 0;
-    font-family: 'Poppins',sans-serif;
+
+* {
+    
+    box-sizing: border-box;
+
+}
+
+body {
+    height: 100%;    
+    display: grid;
 }
 
 .form-control.ng-touched.ng-invalid{
@@ -16,7 +22,61 @@ body{
     color: red;
 }
 
-#passmsg {
-    display: initial;
+.password-str-meter .indicator {
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    display: none;
 }
 
+.password-str-meter .indicator span{
+    width: 100%;
+    height: 100%;
+    background: lightgrey;
+    border-radius: 10px;
+    position: relative;
+}
+
+.password-str-meter .indicator span:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: red;
+}
+
+.password-str-meter .indicator span.weak:before {
+    background-color: red;
+
+}
+
+.password-str-meter .indicator span.medium:before {
+    background-color: orange;
+    
+}
+
+.password-str-meter .indicator span.strong:before {
+    background-color: green;
+    
+}
+
+.password-str-meter .strength-text {
+    display: none;
+}
+
+.password-str-meter .strength-text .weak {
+    color: red;
+}
+
+.password-str-meter .strength-text .medium {
+    color: orange;
+}
+
+.password-str-meter .strength-text .strong {
+    color: green;
+}
