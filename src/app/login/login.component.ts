@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       res => {
         localStorage.setItem('token', res.token);
+        localStorage.setItem('trainer_email', value.email);
         this._router.navigate(['trainer-dashboard']);
         console.log(res.error)
       }
