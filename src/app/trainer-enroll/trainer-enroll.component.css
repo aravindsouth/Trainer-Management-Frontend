@@ -27,3 +27,7 @@
 p{
     color: darkblue;
 }
+.required-field:after {
+    content: " *";
+    color: red;
+}

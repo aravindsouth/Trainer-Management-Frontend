@@ -12,7 +12,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export class TrainerEnrollComponent implements OnInit {
 dropdownList;
 dropdownSettings;
-
+ 
   constructor() { }
 
  enroll_form!: FormGroup;
@@ -50,8 +50,8 @@ dropdownSettings;
       { course_id: 1, course_name: 'Full Stack Development'},
       { course_id: 2, course_name: 'Software Testing'},
       { course_id: 3, course_name: 'Data Science & Analytics'},
-      { course_id: 3, course_name: 'Robotic Process Automation'},
-      { course_id: 4, course_name: 'Cyber Security Analyst'}
+      { course_id: 4, course_name: 'Robotic Process Automation'},
+      { course_id: 5, course_name: 'Cyber Security Analyst'}
     ];
   }
 

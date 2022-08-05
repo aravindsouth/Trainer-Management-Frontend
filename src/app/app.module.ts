@@ -2,7 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 import { TrainerEnrollComponent } from './trainer-enroll/trainer-enroll.component';
 
@@ -18,6 +19,7 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { HeaderComponent } from './header/header.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
     HeaderComponent,
     TrainerEnrollComponent,
     routingComponents,
-    TrainerDashboardComponent
+    TrainerDashboardComponent,
+    CourseAllocationComponent
 
   ],
   imports: [
@@ -36,7 +39,9 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ShowHidePasswordModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   providers: [AuthService, TokenInterceptorService,
 
