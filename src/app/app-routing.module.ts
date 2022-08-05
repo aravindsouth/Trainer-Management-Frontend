@@ -10,8 +10,13 @@ const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full' },
   { path:'login', component:LoginComponent },
   { path:'signup', component:SignupComponent },
-  { path:'trainer-dashboard', component:TrainerDashboardComponent },
-  { path:"enroll",component:TrainerEnrollComponent }
+  { 
+    path:'trainer-dashboard', component:TrainerDashboardComponent,
+    children: [
+      { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" }
+    ]
+  }
+  
 ];
 
 @NgModule({

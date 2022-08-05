@@ -40,7 +40,6 @@ body {
     border-left: 2px solid white;
 }
 
-
 #menu .items li i {
     line-height: 30px;
     width: 30px;
@@ -50,11 +49,24 @@ body {
     color: #bacad49c;
 }
 
-#menu .items li a {
+#menu .items a {
     text-decoration: none;
     line-height: 30px;
     color: #bacad49c;
     transition: 0.3s ease;
+}
+
+#menu .items li:hover{ 
+    background: #4c42e0a8;
+    color: white;
+    cursor: pointer;    
+    border-left: 2px solid white;
+}
+
+#menu .items li a:active li{ 
+    background: #4c42e0a8;
+    color: white;  
+    border-left: 2px solid white;
 }
 
 #interface {
@@ -85,6 +97,7 @@ body {
     border: 1px solid #d7dbe6;
     border-radius: 4px;
 }
+
 
 #interface .navigation .search input {
     border: none;

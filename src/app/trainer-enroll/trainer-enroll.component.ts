@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as AOS from 'aos';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -13,12 +15,23 @@ export class TrainerEnrollComponent implements OnInit {
 dropdownList;
 dropdownSettings;
 
-  constructor() { }
+  constructor(private _router: Router, private _auth: AuthService) { }
+
+  trainerData: any = {name:'', email:'', dob:'', phone:'', hqual:''};
+  trainerEmail: string | null = localStorage.getItem('trainer_email');
 
  enroll_form!: FormGroup;
 
   ngOnInit(): void {
+
     AOS.init();
+
+    /* ------ Get trainer details from db */
+    this._auth.trainerProfile(this.trainerEmail)
+    .subscribe((data) => {
+      console.log(data);
+      this.trainerData = data;
+    })
 
     this.enroll_form=new FormGroup({
       't_id':new UntypedFormControl(''),
@@ -50,8 +63,8 @@ dropdownSettings;
       { course_id: 1, course_name: 'Full Stack Development'},
       { course_id: 2, course_name: 'Software Testing'},
       { course_id: 3, course_name: 'Data Science & Analytics'},
-      { course_id: 3, course_name: 'Robotic Process Automation'},
-      { course_id: 4, course_name: 'Cyber Security Analyst'}
+      { course_id: 4, course_name: 'Robotic Process Automation'},
+      { course_id: 5, course_name: 'Cyber Security Analyst'}
     ];
   }
 
