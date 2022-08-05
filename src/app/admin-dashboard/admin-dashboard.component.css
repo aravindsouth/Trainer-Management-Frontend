@@ -48,6 +48,8 @@ display: flex;
     align-items: center;
 }
 #interface .navigation .profile svg{
+    display: flex;
+    justify-content: flex-start;
     margin-right: 20px;
     font-size: 19px;
     font-weight: 400;
