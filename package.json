@@ -18,21 +18,14 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
-    "aos": "^2.3.4",
-    "ng-multiselect-dropdown": "^1.0.0-beta.19",
-    "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "ngx-show-hide-password": "^2.6.4",
-
     "rxjs": "~7.5.0",
-    "tslib": "^2.4.0",
+    "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.0",
     "@angular/cli": "^14.1.0",
     "@angular/compiler-cli": "^14.1.0",
-    "@types/aos": "^3.0.4",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
