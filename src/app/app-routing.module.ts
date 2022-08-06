@@ -5,6 +5,8 @@ import { TrainerEnrollComponent } from './trainer-enroll/trainer-enroll.componen
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { TrainerListComponent } from './trainer-list/trainer-list.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full' },
@@ -15,8 +17,9 @@ const routes: Routes = [
     children: [
       { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" }
     ]
-  }
-  
+  },
+  { path:'admin-dashboard', component:AdminDashboardComponent },
+  { path:'trainer-list', component:TrainerListComponent } 
 ];
 
 @NgModule({
