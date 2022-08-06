@@ -37,17 +37,18 @@
           </div>
         </div>
         <div class="row mb-3">
-            <label for="address" class="col-sm-4 col-form-label">Address</label>
+            <label for="address" class="col-sm-4 col-form-label required-field">Address</label>
             <div class="col-sm-8">
                 <textarea class="form-control" id="address" rows="3" name="address" formControlName="address"></textarea>
                 <small *ngIf= "address?.invalid  && address?.touched" class="text-danger">Address required</small>
             </div>
           </div>
           <div class="row mb-3">
-            <label for="photo" class="col-sm-4 col-form-label">Upload Photo</label>
+            <label for="photo" class="col-sm-4 col-form-label required-field">Upload Photo</label>
             <div class="col-sm-8"> 
                 <input (change)="onImageChangeFromFile($event)" class="form-control" type="file" id="formFile" name="photo" formControlName="photo" >
                 <small *ngIf= "photo?.hasError('required')" class="text-danger">Photo should be in JPEG format</small>
+                
             </div>
           </div>
           <div class="row mb-3">
@@ -58,21 +59,21 @@
             </div>
           </div>
           <div class="row mb-3">
-            <label for="skills" class="col-sm-4 col-form-label">Skills</label>
+            <label for="skills" class="col-sm-4 col-form-label required-field">Skills</label>
             <div class="col-sm-8">
               <textarea class="form-control" id="skills" rows="3" name="skills" formControlName="skills"></textarea>
               <small *ngIf= "skills?.invalid  && skills?.touched" class="text-danger">Skills required</small>
             </div>
           </div>
           <div class="row mb-3">
-            <label for="company" class="col-sm-4 col-form-label">Current Company Name</label>
+            <label for="company" class="col-sm-4 col-form-label required-field">Current Company Name</label>
             <div class="col-sm-8">
               <input type="text" class="form-control" id="company" name="company" formControlName="company">
               <small *ngIf= "company?.invalid  && company?.touched" class="text-danger">Company name required</small>
             </div>
           </div>
           <div class="row mb-3">
-            <label for="desig" class="col-sm-4 col-form-label">Current Designation</label>
+            <label for="desig" class="col-sm-4 col-form-label required-field">Current Designation</label>
             <div class="col-sm-8">
               <input type="text" class="form-control" id="desig" name="desig" formControlName="desig">
               <small *ngIf= "desig?.invalid  && desig?.touched" class="text-danger">
@@ -82,7 +83,7 @@
             </div>
           </div>
           <div class="row mb-3">
-            <label for="courses" class="col-sm-4 col-form-label">ICTAK Courses Handling</label>
+            <label for="courses" class="col-sm-4 col-form-label required-field">Courses Handling</label>
             <div class="col-sm-8">
               
               <ng-multiselect-dropdown name="courses" formControlName="courses"

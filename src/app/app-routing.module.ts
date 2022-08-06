@@ -7,6 +7,8 @@ import { SignupComponent } from './signup/signup.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
+
 
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full' },
@@ -20,6 +22,8 @@ const routes: Routes = [
   },
   { path:'admin-dashboard', component:AdminDashboardComponent },
   { path:'trainer-list', component:TrainerListComponent } 
+  { path:"course-allocation",component:CourseAllocationComponent}
+
 ];
 
 @NgModule({
