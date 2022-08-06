@@ -35,7 +35,7 @@ import { CourseAllocationComponent } from './course-allocation/course-allocation
     routingComponents,
     TrainerDashboardComponent,
     AdminDashboardComponent,
-    TrainerListComponent
+    TrainerListComponent,
     CourseAllocationComponent
   ],
   imports: [

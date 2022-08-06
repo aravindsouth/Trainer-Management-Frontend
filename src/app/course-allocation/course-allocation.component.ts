@@ -12,11 +12,6 @@ export class CourseAllocationComponent implements OnInit {
  course_alloc_form!: FormGroup;
   constructor() { }
 
-  
-  
-  
-
-
   ngOnInit(): void {
 
     this.course_alloc_form=new FormGroup({
@@ -25,19 +20,19 @@ export class CourseAllocationComponent implements OnInit {
       'batch_id':new FormControl('',Validators.required),
       'start_date':new FormControl('',Validators.required),
       'end_date':new FormControl('',Validators.required),
-      'course_time':new FormControl('',Validators.required),
-      'meetlink':new FormControl('',Validators.required),
+      'time':new FormControl('',Validators.required),
+      'meet_link':new FormControl('',Validators.required),
       'schedule':new FormControl('',Validators.required),
     });
   }
 
  
   trainers=[
-    {id:1, name:"Trainer1", email:"tr1@gmail.com", type:"internal", courses:"FSD"},
-    {id:2, name:"Trainer2", email:"tr2@gmail.com" , type:"empanelled", courses:"software testing"},
-    {id:3, name:"Trainer3", email:"tr3@gmail.com" , type:"industry expert", courses:"cyber security"},
-    {id:4, name:"Trainer4", email:"tr4@gmail.com" , type:"internal", courses:"data science"},
-    {id:5, name:"Trainer5", email:"tr5@gmail.com" , type:"industry expert", courses:"cyber security"}
+    {t_id:1, name:"Trainer1", email:"tr1@gmail.com", type:"internal", courses:"FSD"},
+    {t_id:2, name:"Trainer2", email:"tr2@gmail.com" , type:"empanelled", courses:"software testing"},
+    {t_id:3, name:"Trainer3", email:"tr3@gmail.com" , type:"industry expert", courses:"cyber security"},
+    {t_id:4, name:"Trainer4", email:"tr4@gmail.com" , type:"internal", courses:"data science"},
+    {t_id:5, name:"Trainer5", email:"tr5@gmail.com" , type:"industry expert", courses:"cyber security"}
     
   ];
 
@@ -53,14 +48,19 @@ export class CourseAllocationComponent implements OnInit {
   get end_date(){
     return this.course_alloc_form.get('end_date');
   }
-  get course_time(){
-    return this.course_alloc_form.get('course_time');
+  get time(){
+    return this.course_alloc_form.get('time');
   }
-  get meetlink(){
-    return this.course_alloc_form.get('meetlink');
+  get meet_link(){
+    return this.course_alloc_form.get('meet_link');
   }
   get schedule(){
     return this.course_alloc_form.get('schedule');
+  }
+
+  courseSubmit(){
+    console.log(this.course_alloc_form.value);
+    alert("course assigned");
   }
 
 }
