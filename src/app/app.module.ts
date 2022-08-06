@@ -19,7 +19,12 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { HeaderComponent } from './header/header.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { TrainerListComponent } from './trainer-list/trainer-list.component';
+
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
+
 
 
 @NgModule({
@@ -29,8 +34,9 @@ import { CourseAllocationComponent } from './course-allocation/course-allocation
     TrainerEnrollComponent,
     routingComponents,
     TrainerDashboardComponent,
+    AdminDashboardComponent,
+    TrainerListComponent
     CourseAllocationComponent
-
   ],
   imports: [
     BrowserModule,

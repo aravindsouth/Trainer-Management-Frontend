@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import * as AOS from 'aos';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -15,29 +17,24 @@ export class SignupComponent implements OnInit {
 
   rpassmsg = "";
 
+  @ViewChild('pwdmeter') passmeter!: ElementRef;
+
   constructor(private _router:Router, private formBuilder:FormBuilder, private _auth: AuthService) { }
 
   ngOnInit(): void {
+    AOS.init();
 
     /* ---------- Registration form validation -------------- */
 
-    // this.registerform = new FormGroup({
-    //   'fname' : new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
-    //   'dob' : new FormControl(null, Validators.required),
-    //   'email' : new FormControl(null, [ Validators.required, Validators.email ]),
-    //   'mobile' : new FormControl(null, [ Validators.required, Validators.pattern('/^[6-9]{1}[0-9]{9}$/')]),
-    //   'hqual' : new FormControl(null, [ Validators.required, Validators.pattern('^[a-zA-Z]+$') ]),
-    //   'password' : new FormControl(null, [ Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$') ]),
-    //   'cpassword' : new FormControl(null, Validators.required)
-    // });
+  
 
     this.registerform = this.formBuilder.group({ 
       fname: ['', [Validators.required, Validators.minLength(4), Validators.pattern(/^[a-zA-Z ]*$/)]],
       dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       mobile: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
-      hqual: ['', Validators.required],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm)]],
+      hqual: ['', [Validators.required, Validators.minLength(2)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,20}$/gm)]],
       cpassword: ['', Validators.required]
 
     })
@@ -49,6 +46,35 @@ export class SignupComponent implements OnInit {
   goHome() {
     this._router.navigate(['/login']);
   }
+
+  /* ------ DONT LET THE FIRST ENTRY BE WHITE SPACE ------- */
+  noFirstSpace(event:any){
+    if(event.target.selectionStart === 0 && event.keyCode == "32"){
+      
+      event.preventDefault();
+
+    }
+  }
+
+  /* ------ PASSWORD STRENGTH METER ------- */
+  isPasswordStrong() {
+ 
+    const input = this.registerform.get('password')?.value;
+    const indicator = this.registerform.get('.indicator')?.value;
+    const weak = this.registerform.get('.weak')?.value;
+    const medium = this.registerform.get('.medium')?.value;
+    const strong = this.registerform.get('.strong');
+    const strText = this.registerform.get('.strength-text');
+
+    console.log(input+"\n"+this.passmeter);
+
+    if(input != ""){
+      // indicator.style.display = "block";
+      // indicator.style.display = "flex";
+    }
+
+  }
+  
 
   /* ------ PASSWORD MATCH CHECK ------- */
   checkPassword() {
