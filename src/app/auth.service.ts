@@ -31,5 +31,8 @@ export class AuthService {
     // return this.http.get<any>(this.baseUri+"trainer-profile",{params:{"trainer_email": trainer_email}})
     return this.http.get<any>(this.baseUri+"trainer-profile/"+trainer_email)
   }
+  getTrainers() {
+    return this.http.get<any>(this.baseUri+"trainers");
+  }
   
 }
