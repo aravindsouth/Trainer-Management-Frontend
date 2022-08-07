@@ -111,9 +111,10 @@
           <h3 class="modal-title">Trainer Profile Update</h3>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"> </button>
       </div>
+      <form [formGroup]="enroll_form" (ngSubmit)="enrollSubmit()">
       <div class="modal-body">
         <div class="form-body">  
-          <form [formGroup]="enroll_form" (ngSubmit)="enrollSubmit()">
+          
             <div class="row mb-3">
               <label for="t_id" class="col-sm-4 col-form-label">Trainer ID</label>
               <div class="col-sm-8">
@@ -201,13 +202,15 @@
                   <small *ngIf= "courses?.invalid  && courses?.touched" class="text-danger">Select atleast one course</small>
                   </div>
                 </div>
-            </form>
+            
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button [disabled]="enroll_form.invalid" type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <!-- [disabled]="enroll_form.invalid" -->
       </div>
+    </form>
     </div>
   </div>
 </div>

@@ -113,13 +113,11 @@ dropdownSettings;
     
     /* ------ Get trainer details from db */
     this._auth.trainerUpdate(this.trainerEmail)
-    // .subscribe((data) => {
-    //   console.log(data);
-    //   this.trainerData = data;
-    // });
-
-    console.log(this.enroll_form.value);
-    alert("Your information have been successfully submitted");
+    .subscribe((data) => {
+      console.log(data);
+      alert('Trainer Data Updated');
+      this.trainerData = data;
+    });
   }
 
 }

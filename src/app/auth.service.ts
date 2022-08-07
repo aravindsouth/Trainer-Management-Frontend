@@ -18,8 +18,8 @@ export class AuthService {
     return this.http.post<any>(this.baseUri+"signup", trainer);
   }
 
-  trainerUpdate(trainer_email) {
-
+  trainerUpdate(trainer_email: any) {
+    return this.http.put<any>(this.baseUri+"enroll", trainer_email);
   }
 
   getToken() {
