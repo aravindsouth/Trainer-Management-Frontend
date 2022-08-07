@@ -20,8 +20,10 @@ const routes: Routes = [
       { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" }
     ]
   },
-  { path:'admin-dashboard', component:AdminDashboardComponent },
-  { path:'trainer-list', component:TrainerListComponent },
+  { path:'admin-dashboard', component:AdminDashboardComponent,
+    children: [
+      { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"}
+    ] },
   { path:"course-allocation",component:CourseAllocationComponent}
 
 ];
