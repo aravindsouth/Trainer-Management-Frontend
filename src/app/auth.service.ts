@@ -35,4 +35,7 @@ export class AuthService {
     return this.http.get<any>(this.baseUri+"trainers");
   }
   
+  trainerApprove(trainer_email) {
+    return this.http.put<any>(this.baseUri+"approve-trainer", {email: trainer_email})
+  }
 }

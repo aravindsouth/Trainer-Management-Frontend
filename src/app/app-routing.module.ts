@@ -21,7 +21,7 @@ const routes: Routes = [
     ]
   },
   { path:'admin-dashboard', component:AdminDashboardComponent },
-  { path:'trainer-list', component:TrainerListComponent } 
+  { path:'trainer-list', component:TrainerListComponent },
   { path:"course-allocation",component:CourseAllocationComponent}
 
 ];
