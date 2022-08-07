@@ -3,94 +3,42 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-  <h2><b>Trainers List</b></h2>
- </div>
- </div>
+                    <h2><b>Trainers List</b></h2>
+                </div>
+            </div>
         </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                        <th>Id</th>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
+                    <th>Contact</th>
                     <th>Approved</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <!-- <tbody>
-                <tr>
-
-                    <td>1378</td>
-                    <td>Akshay N</td>
-                    <td>akshayn@mail.com</td>
-  
-                    <td>0966686371</td>
+            <tbody>
+                <tr *ngFor="let trainer of trainers">
+                    <td>#</td>
+                    <td>{{trainer.name}}</td>
                     <td>
-                        <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a>
-                        <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        Email: <em>{{trainer.email}}</em><br>
+                        Phone: {{trainer.phone}}
+                    </td>
+                    <td>
+                        <button class="btn btn-warning" [disabled]="trainer.approved"
+                            (click)="trainerApproval(trainer.email)">Approve</button>
+                    </td>
+                    <td>
+                        <!-- <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a> -->
+                        <!-- <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewTrainerModal"
+                            [disabled]="!trainer.approved"> Assign Employment</button>
+                        <!-- <button class="btn btn-warning" [disabled]="trainer.approved"
+                            (click)="trainerApproval(trainer.email)">Approve</button> -->
                     </td>
                 </tr>
-                <tr>
- 
-                    <td>1678</td>
-                    <td>Paul Joy</td>
-                    <td>pauljoy@mail.com</td>
-                    <td>0966686372</td>
-                    <td>
-                        <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a>
-                        <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                    </td>
-                </tr>
-                <tr>
- 
-                     <td>2567</td>
-                    <td>Ameesha K</td>
-                    <td>ameesh@mail.com</td>
-                    <td>0966686373</td>
-                    <td>
-                        <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a>
-                        <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                    </td>
-                </tr>
-                <tr>
- 
-                    <td>5632</td>
-                    <td>Manju NR</td>
-                    <td>manju87@mail.com</td>
-                    <td>0966686374</td>
-                    <td>
-                        <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a>
-                        <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                    </td>
-                </tr>     
- <tr>
-  
-                    <td>2276</td>
-                    <td>Rouman J</td>
-                    <td>rouman00@mail.com</td>
-                    <td>0966686375</td>
-                    <td>
-                        <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a>
-                        <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                    </td>
-                </tr> 
-            </tbody> -->
-        <tbody>
-            <tr *ngFor="let trainer of trainers">
-                <td>TrainerId</td>
-                <td>{{trainer.name}}</td>
-                <td>{{trainer.email}}</td>
-                <td>{{trainer.phone}}</td>
-                <td>{{trainer.approved}}</td>
-                <td>
-                    <!-- <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a> -->
-                    <!-- <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewTrainerModal" [disabled]="!trainer.approved"> Assign Employment</button>
-                    <button class="btn btn-primary" [disabled]="trainer.approved" (click)="trainerApproval(trainer.email)">Approve</button>
-                </td>
-            </tr>
-        </tbody>
+            </tbody>
         </table>
 
     </div>
@@ -140,28 +88,28 @@
 <!-- Edit Modal HTML -->
 
 <div id="viewTrainerModal" class="modal fade">
-<div class="modal-dialog">
-<div class="modal-content">
-<form>
- <div class="modal-header">      
-  <h4 class="modal-title">Assign Employment type</h4>
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
- </div>
- <div class="modal-body"> 
-  <div class="form-group">
-   <label>Type of </label>
-   <input type="email" class="form-control" required>
-  </div> 
- </div>
- <div class="modal-footer">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-  <button>Assign</button>
- </div>
-</form>
-</div>
-</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Assign Employment type</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Type of </label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <button>Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Delete Modal HTML -->

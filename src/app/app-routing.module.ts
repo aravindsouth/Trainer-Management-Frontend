@@ -22,9 +22,9 @@ const routes: Routes = [
   },
   { path:'admin-dashboard', component:AdminDashboardComponent,
     children: [
-      { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"}
+      { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"},
+      { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
     ] },
-  { path:"course-allocation",component:CourseAllocationComponent}
 
 ];
 
@@ -38,5 +38,5 @@ export const routingComponents = [
   LoginComponent,
   SignupComponent,
   TrainerDashboardComponent,
-  TrainerEnrollComponent
+  TrainerEnrollComponent,
  ]
