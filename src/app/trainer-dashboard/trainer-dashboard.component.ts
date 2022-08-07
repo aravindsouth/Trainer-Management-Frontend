@@ -29,15 +29,19 @@ export class TrainerDashboardComponent implements OnInit {
     this._router.navigate(["/login"]);
   }
 
+  //clicked link active
+  clicked: boolean = false;
+
+  Clicked() {
+    this.clicked = true;
+    // document.getElementById("sidelink3")?.style.color="white";
+  }
+
   hamburger() {
     let ham:any = document.getElementById('menu-btn');
     let menu:any = document.getElementById('menu');
 
-    if(menu.style.display === "block") {
-      menu.style.display = "none";
-    } else {
-      menu.style.display = "block";
-    }
+   
   }
   
   

@@ -17,7 +17,7 @@ dropdownSettings;
 
   constructor(private _router: Router, private _auth: AuthService) { }
 
-  trainerData: any = {name:'', email:'', dob:'', phone:'', hqual:''};
+  trainerData: any = {name:'', address:'', email:'', dob:'', phone:'', highestqual:'', skills:'', company:'', designation:''};
   trainerEmail: string | null = localStorage.getItem('trainer_email');
 
  enroll_form!: FormGroup;
@@ -107,7 +107,17 @@ dropdownSettings;
     }
   }
  
+
+// update trainer profile
   enrollSubmit(){
+    
+    /* ------ Get trainer details from db */
+    this._auth.trainerUpdate(this.trainerEmail)
+    // .subscribe((data) => {
+    //   console.log(data);
+    //   this.trainerData = data;
+    // });
+
     console.log(this.enroll_form.value);
     alert("Your information have been successfully submitted");
   }

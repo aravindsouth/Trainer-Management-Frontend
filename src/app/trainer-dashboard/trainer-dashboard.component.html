@@ -1,10 +1,9 @@
 <div class="container-fluid d-flex">
     <section id="menu" class="vh-100">
 
-        <img src="../assets/logos/cropped-ict-ico.png" class="img img-thumbnail mx-2 my-2" width="50px" alt="ict-logo">
+        <div class="d-flex justify-content-around">
+            <img src="../assets/logos/cropped-ict-ico.png" class="img img-thumbnail mx-2 my-2" width="80px" alt="ict-logo">
 
-        <div class="logo d-flex text-center text-white pb-4">
-            <h4>Welcome {{trainerData.name}}</h4>
         </div>
 
         <div class="items mt-3 px-2 text-start">
@@ -36,7 +35,7 @@
                 </li>
             </a>
 
-            <a [routerLink]="[{ outlets: { trainerTarget: 'enroll' } } ]">
+            <a id="sidelink3" [routerLink]="[{ outlets: { trainerTarget: 'enroll' } } ]" [ngClass]="{'active-link':clicked}" routerLinkActive="active-link" (click)="Clicked()">
                 <li>
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -102,7 +101,7 @@
         </div>
 
         <h3 class="i-name shadow px-4">
-            Dashboard
+            Trainer Dashboard
         </h3>
 
         <div class="stats">

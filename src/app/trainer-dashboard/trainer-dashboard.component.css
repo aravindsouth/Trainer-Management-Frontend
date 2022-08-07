@@ -125,6 +125,7 @@ body {
     border-radius: 50%;
 }
 
+
 @media(max-width: 769px) {
     #menu {
         width: 200px;

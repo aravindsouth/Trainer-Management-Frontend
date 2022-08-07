@@ -18,6 +18,10 @@ export class AuthService {
     return this.http.post<any>(this.baseUri+"signup", trainer);
   }
 
+  trainerUpdate(trainer_email) {
+
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }
