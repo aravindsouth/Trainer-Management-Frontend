@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-trainer-list',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainerListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _auth: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    
   }
 
 }
