@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { trainerModel } from '../trainer-list/trainer.model';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-course-allocation',
   templateUrl: './course-allocation.component.html',
@@ -8,9 +9,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CourseAllocationComponent implements OnInit {
  
+ trainers: trainerModel[] = []
  searchText:any;
  course_alloc_form!: FormGroup;
-  constructor() { }
+  constructor(private _auth: AuthService) { }
+
+  
 
   
   
@@ -29,17 +33,23 @@ export class CourseAllocationComponent implements OnInit {
       'meetlink':new FormControl('',Validators.required),
       'schedule':new FormControl('',Validators.required),
     });
+
+    this._auth.getTrainers()
+    .subscribe((data) => {
+      this.trainers = data;
+      console.log(this.trainers)
+    })
   }
 
  
-  trainers=[
-    {id:1, name:"Trainer1", email:"tr1@gmail.com", type:"internal", courses:"FSD"},
-    {id:2, name:"Trainer2", email:"tr2@gmail.com" , type:"empanelled", courses:"software testing"},
-    {id:3, name:"Trainer3", email:"tr3@gmail.com" , type:"industry expert", courses:"cyber security"},
-    {id:4, name:"Trainer4", email:"tr4@gmail.com" , type:"internal", courses:"data science"},
-    {id:5, name:"Trainer5", email:"tr5@gmail.com" , type:"industry expert", courses:"cyber security"}
+  // trainers=[
+  //   {id:1, name:"Trainer1", email:"tr1@gmail.com", type:"internal", courses:"FSD"},
+  //   {id:2, name:"Trainer2", email:"tr2@gmail.com" , type:"empanelled", courses:"software testing"},
+  //   {id:3, name:"Trainer3", email:"tr3@gmail.com" , type:"industry expert", courses:"cyber security"},
+  //   {id:4, name:"Trainer4", email:"tr4@gmail.com" , type:"internal", courses:"data science"},
+  //   {id:5, name:"Trainer5", email:"tr5@gmail.com" , type:"industry expert", courses:"cyber security"}
     
-  ];
+  // ];
 
   get course_id(){
     return this.course_alloc_form.get('course_id');
