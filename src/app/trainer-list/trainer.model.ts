@@ -13,7 +13,7 @@ export class trainerModel {
         public photo: string,
         public trainer_id: string,
         public approved: boolean,
-        public ict_data: {
+        public ict_courses_data: [{
             start_date: Date,
             end_date: Date,
             time: string,
@@ -21,6 +21,6 @@ export class trainerModel {
             batch_id: string,
             meeting_location: string,
             schedule: string
-        }
+        }]
     ) {}
 }

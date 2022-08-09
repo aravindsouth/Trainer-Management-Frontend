@@ -26,6 +26,7 @@ export class TrainerListComponent implements OnInit {
     .subscribe((data) => {
       console.log(data)
       //window.location.reload()
+      this.ngOnInit();
     })
 
   }
