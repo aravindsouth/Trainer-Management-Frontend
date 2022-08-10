@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+declare var $: any; //for jQuery
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
+
+   //Logout function
+   logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('trainer_email');
+    this._router.navigate(["/login"]);
+  }
+
+
 
 }

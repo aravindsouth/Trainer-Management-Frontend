@@ -136,7 +136,7 @@ display: flex;
 
 #menu{
     background: #111827;
-    width: 300px;
+    width: 200px;
     height: 100%;
     position: fixed;
     top: 0;
@@ -194,8 +194,8 @@ display: flex;
     transition: 0.3s ease;
 }
 #interface{
-    width: calc(100% - 300px);
-    margin-left: 300px;
+    width: calc(100% - 200px);
+    margin-left: 200px;
     position: relative;
 }
 #interface .navigation{
