@@ -13,6 +13,7 @@ export class trainerModel {
         public photo: string,
         public trainer_id: string,
         public approved: boolean,
+        public employment_type: string,
         public ict_courses_data: [{
             start_date: Date,
             end_date: Date,

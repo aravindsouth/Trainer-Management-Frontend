@@ -33,7 +33,7 @@
                         <!-- <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a> -->
                         <!-- <a href="#deleteTrainerModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
                         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewTrainerModal"
-                            [disabled]="!trainer.approved" (click)="setEmploymentEmail(trainer)"> Assign Employment</button>
+                            [disabled]="!trainer.approved || trainer.employment_type" (click)="setEmploymentEmail(trainer)"> Assign Employment</button>
                         <!-- <button class="btn btn-warning" [disabled]="trainer.approved"
                             (click)="trainerApproval(trainer.email)">Approve</button> -->
                     </td>
@@ -113,7 +113,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <button type="submit">Assign</button>
-                    <p>Assigning will send email notofication to the trainer</p>
+                    <p>Assigning will send email notification to the trainer</p>
                 </div>
             </form>
         </div>
