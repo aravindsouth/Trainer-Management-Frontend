@@ -46,4 +46,8 @@ export class AuthService {
   courseAllocate(course) {
     return this.http.put<any>(this.baseUri+"add-course", course)
   }
+
+  assignEmployment(value) {
+    return this.http.put<any>(this.baseUri+"set-employment-type", value)
+  }
 }
