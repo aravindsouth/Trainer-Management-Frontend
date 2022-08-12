@@ -25,8 +25,14 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
+FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin, timeGridPlugin]);
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { TrainerViewComponent } from './trainer-view/trainer-view.component';
     AdminDashboardComponent,
     TrainerListComponent,
     CourseAllocationComponent,
-    TrainerViewComponent
+    TrainerViewComponent,
+    ScheduleComponent,
+   
+   
   ],
   imports: [
     BrowserModule,
@@ -47,9 +56,11 @@ import { TrainerViewComponent } from './trainer-view/trainer-view.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ShowHidePasswordModule,
+    FullCalendarModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+   
   ],
   providers: [AuthService, TokenInterceptorService,
 

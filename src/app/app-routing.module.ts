@@ -8,12 +8,16 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+
 
 
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full' },
   { path:'login', component:LoginComponent },
   { path:'signup', component:SignupComponent },
+  { path:'schedule', component:ScheduleComponent},
+  
   { 
     path:'trainer-dashboard', component:TrainerDashboardComponent,
     children: [
