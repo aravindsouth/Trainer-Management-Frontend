@@ -1,8 +1,8 @@
 <section>
   <div class="container-fluid m-1">
     
-    <div class="row text-end">
-      <div class="col">
+    <div class="row">
+      <div class="col text-center">
         <button class="btn btn-success mx-4 my-2 px-4" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -17,7 +17,7 @@
       <div class="col-lg">
         <div class="shadow text-center m-2">
           
-          <img src="http://localhost:3000/" width="150px" class="rounded-cirle img-fluid" alt="avatar">
+          <img src='{{trainerData.photo}}' width="150px" class="rounded-cirle img-fluid" alt="avatar">
           
         </div>
       </div>
@@ -81,22 +81,37 @@
       </div>
 
       <!-- Education and others -->
-      <div class="row mx-3 d-flex justify-content-around">
-        <div class="col-sm-3 card shadow">
+      <div class="row mx-3 my-2 d-flex justify-content-around">
+        <div class="col-sm-3 card shadow mb-2">
           <h5 class="card-title mt-1">Qualification</h5>
           <p class="text-muted"> {{trainerData.highestqual}} </p>
 
         </div>
 
-        <div class="col-sm-3 card shadow">
+        <div class="col-sm-3 card shadow mb-2">
           <h5 class="card-title mt-1">Previously worked at</h5>
           <p class="text-muted"> {{trainerData.company}} </p>
         </div>
 
-        <div class="col-sm-3 card shadow">
+        <div class="col-sm-3 card shadow mb-2">
           <h5 class="card-title mt-1">Previous Designation</h5>
           <p class="text-muted"> {{trainerData.designation}} </p>
         </div>
+      </div>
+
+      <div class="row mx-3 my-2 d-flex justify-content-around">
+
+        <div class="col-sm-5 card shadow mb-2">
+          <h5 class="card-title mt-1">Skillset</h5>
+          <p class="text-muted"> {{trainerData.skills}} </p>
+
+        </div>
+
+        <div class="col-sm-5 card shadow mb-2">
+          <h5 class="card-title mt-1">Courses Handling</h5>
+          <p class="text-muted"> {{trainerData.courses}} </p>
+        </div>
+
       </div>
 
     </div>

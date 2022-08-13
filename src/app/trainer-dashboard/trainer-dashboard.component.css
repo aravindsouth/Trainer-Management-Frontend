@@ -154,7 +154,8 @@ body {
 }
 
 .notifi-item {
-    cursor: pointer;
+    cursor: pointer;    
+    height: 0px;
     line-height: 4rem;
 }
 

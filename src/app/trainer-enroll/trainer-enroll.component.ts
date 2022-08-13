@@ -17,7 +17,7 @@ export class TrainerEnrollComponent implements OnInit {
 
   constructor(private _router: Router, private _auth: AuthService) { }
 
-  trainerData: any = { name: '', address: '', email: '', dob: '', phone: '', highestqual: '', skills: '', company: '', designation: '' };
+  trainerData: any = { name: '', address: '', email: '', dob: '', phone: '', photo: '', highestqual: '', skills: '', company: '', designation: '', courses: '' };
   trainerEmail: string | null = localStorage.getItem('trainer_email');
 
   enroll_form!: FormGroup;
@@ -110,8 +110,7 @@ export class TrainerEnrollComponent implements OnInit {
 
   // update trainer profile
   enrollSubmit() {
-
-    /* ------ Get trainer details from db */
+    
     this._auth.trainerUpdate(this.trainerData)
       .subscribe((data) => {
         console.log(data);
