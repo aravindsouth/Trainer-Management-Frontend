@@ -43,4 +43,12 @@ export class AuthService {
   trainerApprove(trainer_email) {
     return this.http.put<any>(this.baseUri+"approve-trainer", {email: trainer_email})
   }
+
+  courseAllocate(course) {
+    return this.http.put<any>(this.baseUri+"add-course", course)
+  }
+
+  assignEmployment(value) {
+    return this.http.put<any>(this.baseUri+"set-employment-type", value)
+  }
 }

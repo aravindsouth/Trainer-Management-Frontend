@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 declare var $: any; //for jQuery
 
+
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -15,6 +16,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
    //Logout function
    logOut() {
     localStorage.removeItem('token');
@@ -23,5 +25,12 @@ export class AdminDashboardComponent implements OnInit {
   }
 
 
+
+
+  logoutAdmin() {
+    localStorage.removeItem('token')
+    console.log('admin logged out')
+    this._router.navigate(['login'])
+  }
 
 }

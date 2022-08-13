@@ -11,13 +11,9 @@ export class CourseAllocationComponent implements OnInit {
  
  trainers: trainerModel[] = []
  searchText:any;
+ courseAllocated:boolean = false;
  course_alloc_form!: FormGroup;
   constructor(private _auth: AuthService) { }
-
-  
-
-  
-  
   
 
 
@@ -73,4 +69,23 @@ export class CourseAllocationComponent implements OnInit {
     return this.course_alloc_form.get('schedule');
   }
 
+  setTrainer(trainer) {
+    localStorage.setItem('trainer', trainer)
+  }
+   
+    courseAllocation(value) {
+      this.courseAllocated = true;
+      console.log(value)
+      value.email = localStorage.getItem('trainer')
+      this._auth.courseAllocate(value)
+      .subscribe((data) => {
+        console.log(data)
+        if(data.status){
+          alert(data.reason)
+        }else {
+          alert(data.reason)
+        }
+        
+      })
+    }
 }
