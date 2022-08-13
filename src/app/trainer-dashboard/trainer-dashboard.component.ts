@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
+//declaring custom js functions
+declare function toggleNotification(box:any):any;
+declare function toggleSidebar(sidebar:any, closebtn:any):any;
+
 @Component({
   selector: 'app-trainer-dashboard',
   templateUrl: './trainer-dashboard.component.html',
@@ -37,11 +41,21 @@ export class TrainerDashboardComponent implements OnInit {
     // document.getElementById("sidelink3")?.style.color="white";
   }
 
-  hamburger() {
-    let ham:any = document.getElementById('menu-btn');
-    let menu:any = document.getElementById('menu');
+  //Calling external js function inside a native function
+  notificationToggle() {
 
-   
+    const box = document.getElementById('notifi-box');
+    
+    toggleNotification(box);
+
+  }
+
+
+  //Sidebar toggle function
+  sidebarToggle() {
+    const sidebar = document.getElementById('menu');
+    const closebtn = document.getElementById('closebtn');
+    toggleSidebar(sidebar,closebtn);
   }
   
   
