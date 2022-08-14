@@ -20,7 +20,7 @@
             <tbody>
                 <tr *ngFor="let trainer of trainers">
                     <td>{{trainer.trainer_id}}</td>
-                    <td>{{trainer.name}}</td>
+                    <td><a routerLink="/trainer-view">{{trainer.name}}</a></td>
                     <td>
                         Email: <em>{{trainer.email}}</em><br>
                         Phone: {{trainer.phone}}

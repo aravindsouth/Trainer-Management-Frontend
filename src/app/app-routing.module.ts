@@ -8,6 +8,7 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
+import { TrainerViewComponent } from './trainer-view/trainer-view.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"},
       { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
     ] },
+    { path:'trainer-view', component:TrainerViewComponent },
 
 ];
 

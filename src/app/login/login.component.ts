@@ -53,7 +53,8 @@ export class LoginComponent implements OnInit {
         else if(res.status && res.role=="admin"){
           this._router.navigate(['admin-dashboard']);
         }else {
-        console.log(res.error)
+        console.log(res.status)
+        alert("invalid username or password")
         }
       }
     )
