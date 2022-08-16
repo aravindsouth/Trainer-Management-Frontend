@@ -1,3 +1,8 @@
+
+<div class="w-25 p-3" >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText"  placeholder="Search">
+</div> 
+
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
@@ -18,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let trainer of trainers">
+                <tr *ngFor="let trainer of trainers | filter:searchText">
                     <td>{{trainer.trainer_id}}</td>
                     <td><a routerLink="/trainer-view">{{trainer.name}}</a></td>
                     <td>
@@ -93,26 +98,34 @@
             <form [formGroup]="employmentForm" (ngSubmit)="onSubmit(employmentForm.value)">
                 <div class="modal-header">
                     <h5 class="modal-title">Assign - Employment Type</h5>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
                 </div>
                 <div class="modal-body">
                     <div class="form-group">   
                         <!-- <input type="email" class="form-control" required> -->
                             <label>Type of Employment</label>
-                            <input list="employmentTypes" formControlName="employmentType">
+                            <select class="form-select" aria-label="Default select example" formControlName="employmentType">
+                                <!-- <option selected >Select</option> -->
+                                <option value="Industry Expert">Industry Expert</option>
+                                <option value="Internal">Internal</option>
+                                <option value="Empanelled">Empanelled</option>
+                              </select>
+                              
+                            <!-- <input list="employmentTypes" formControlName="employmentType">
                             <datalist id="employmentTypes">
                               <option value="Industry Expert">
                               <option value="Internal">
                               <option value="Empanelled">
-                            </datalist>
+                            </datalist> -->
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
-                    <button type="submit">Assign</button>
+                    </button> -->
+                    <button type="submit" class="btn btn-primary">Assign</button>
                     <p>Assigning will send email notification to the trainer</p>
                 </div>
             </form>

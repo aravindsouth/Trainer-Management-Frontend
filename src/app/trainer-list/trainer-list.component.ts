@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./trainer-list.component.css']
 })
 export class TrainerListComponent implements OnInit {
-
+  searchText:any;
   trainers: trainerModel[] = []
   employmentForm!: FormGroup
   constructor(private _auth: AuthService) { }
@@ -66,5 +66,6 @@ export class TrainerListComponent implements OnInit {
       }
     })
   }
+
 
 }
