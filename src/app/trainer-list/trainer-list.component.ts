@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { trainerModel } from './trainer.model';
 import { AuthService } from '../auth.service';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -10,9 +10,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class TrainerListComponent implements OnInit {
 
+  searchText:any;
   trainers: trainerModel[] = []
   employmentForm!: FormGroup
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, private element: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.employmentForm = new FormGroup({
@@ -33,6 +34,8 @@ export class TrainerListComponent implements OnInit {
       console.log(data)
       //window.location.reload()
       this.ngOnInit();
+
+
     })
 
   }

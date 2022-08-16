@@ -133,7 +133,7 @@
             <div class="row mb-3">
               <label for="t_id" class="col-sm-4 col-form-label">Trainer ID</label>
               <div class="col-sm-8">
-                <input class="form-control" type="text" name="t_id" 
+                <input class="form-control disabled" type="text" name="t_id" 
                 formControlName="t_id" readonly>
               </div>
             </div>
@@ -147,19 +147,19 @@
               <div class="row mb-3">
                 <label for="email" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="email" name="email" 
+                  <input class="form-control disabled" type="email" name="email" 
                   value="{{trainerData.email}}" formControlName="email" readonly>
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="phone" class="col-sm-4 col-form-label">Phone No.</label>
                 <div class="col-sm-8">
-                  <input class="form-control" type="text" name="phone" 
+                  <input class="form-control disabled" type="text" name="phone" 
                   value="{{trainerData.phone}}" formControlName="phone" readonly>
                 </div>
               </div>
               <div class="row mb-3">
-                  <label for="address" class="col-sm-4 col-form-label">Address</label>
+                  <label for="address" class="required-field col-sm-4 col-form-label">Address</label>
                   <div class="col-sm-8">
                       <textarea class="form-control" id="address" 
                       rows="3" name="address" formControlName="address" 
@@ -168,23 +168,23 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="photo" class="col-sm-4 col-form-label">Upload Photo</label>
+                  <label for="photo" class="required-field col-sm-4 col-form-label">Upload Photo</label>
                   <div class="col-sm-8"> 
                       <input (change)="onImageChangeFromFile($event)" 
                       class="form-control" type="file" id="formFile" 
                       name="photo" formControlName="photo" [(ngModel)]="trainerData.photo">
-                      <small *ngIf= "photo?.hasError('required')" class="text-danger">Photo should be in JPEG format</small>
+                      <small *ngIf= "photo?.hasError('required')" class="text-danger">Photo should be in JPEG/PNG format and less than 20mb</small>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="hqual" class="col-sm-4 col-form-label">Highest Qualification</label>
                   <div class="col-sm-8">
-                    <input class="form-control" type="text" name="hqual" 
+                    <input class="form-control disabled" type="text" name="hqual" 
                     value="{{trainerData.highestqual}}" formControlName="hqual" readonly>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="skills" class="col-sm-4 col-form-label">Skills</label>
+                  <label for="skills" class="required-field col-sm-4 col-form-label">Skills</label>
                   <div class="col-sm-8">
                     <textarea class="form-control" id="skills" 
                     rows="3" name="skills" formControlName="skills"
@@ -193,7 +193,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="company" class="col-sm-4 col-form-label">Current Company Name</label>
+                  <label for="company" class="required-field col-sm-4 col-form-label">Current Company Name</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="company" 
                     name="company" formControlName="company"
@@ -202,7 +202,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="desig" class="col-sm-4 col-form-label">Current Designation</label>
+                  <label for="desig" class="required-field col-sm-4 col-form-label">Current Designation</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="desig" 
                     name="desig" formControlName="desig"
@@ -214,7 +214,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="courses" class="col-sm-4 col-form-label">ICTAK Courses Handling</label>
+                  <label for="courses" class="required-field col-sm-4 col-form-label">ICTAK Courses Handling</label>
                   <div class="col-sm-8">
                     
                     <ng-multiselect-dropdown name="courses" formControlName="courses"

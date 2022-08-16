@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ export class TrainerEnrollComponent implements OnInit {
   dropdownList;
   dropdownSettings;
 
-  constructor(private _router: Router, private _auth: AuthService) { }
+  constructor(private _router: Router, private _auth: AuthService, private http: HttpClient) { }
 
   trainerData: any = { name: '', address: '', email: '', dob: '', phone: '', photo: '', highestqual: '', skills: '', company: '', designation: '', courses: '' };
   trainerEmail: string | null = localStorage.getItem('trainer_email');
@@ -93,12 +94,14 @@ export class TrainerEnrollComponent implements OnInit {
     return this.enroll_form.get('courses');
   }
 
+  uploadImage: any;
   onImageChangeFromFile($event: any) {
     if ($event.target.files && $event.target.files[0]) {
       let file = $event.target.files[0];
       console.log(file);
-      if (file.type == "image/jpeg") {
-        console.log("correct format");
+      if (file.type === "image/jpeg" || file.type === "image/png") {
+        console.log("correct format");        
+        this.uploadImage = file;
       }
       else {
         this.photo?.reset();
@@ -109,8 +112,19 @@ export class TrainerEnrollComponent implements OnInit {
 
 
   // update trainer profile
+ 
   enrollSubmit() {
+
+    //for uploading image
+    const formData = new FormData();
+    formData.append('file', this.uploadImage);
     
+    this.http.post<any>('http://localhost:3000/uploadphoto', formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+
+    //for updating info --------------    
     this._auth.trainerUpdate(this.trainerData)
       .subscribe((data) => {
         console.log(data);
