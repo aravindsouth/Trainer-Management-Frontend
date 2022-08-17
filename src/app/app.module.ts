@@ -25,6 +25,7 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 
 
@@ -38,7 +39,8 @@ import { TrainerViewComponent } from './trainer-view/trainer-view.component';
     AdminDashboardComponent,
     TrainerListComponent,
     CourseAllocationComponent,
-    TrainerViewComponent
+    TrainerViewComponent,
+    UpdateCourseComponent
   ],
   imports: [
     BrowserModule,
