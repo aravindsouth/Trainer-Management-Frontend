@@ -9,6 +9,8 @@
 }
 h2 {
     font-weight: 400;
+    text-align: center;
+    color: #fff;
 }
 .card {
     display: flex;
@@ -16,6 +18,9 @@ h2 {
     align-items: center;
     height: inherit;
     padding: 20px;
+    }
+    .card-header {
+        background-color: black;
     }
     form {
         width: 100%;
