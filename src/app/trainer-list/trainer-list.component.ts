@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trainerModel } from './trainer.model';
 import { AuthService } from '../auth.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { faN } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-trainer-list',
@@ -16,7 +17,7 @@ export class TrainerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.employmentForm = new FormGroup({
-      employmentType: new FormControl('')
+      employmentType: new FormControl('',Validators.required)
     })
     this._auth.getTrainers()
     .subscribe((data) => {
@@ -25,6 +26,14 @@ export class TrainerListComponent implements OnInit {
     })
     
   }
+
+  get employmentType(){
+    return this.employmentForm.get('employmentType');
+  }
+
+ close_modal(){
+  this.employmentType?.reset();
+ }
 
   trainerApproval(trainer_email) {
     console.log(trainer_email)

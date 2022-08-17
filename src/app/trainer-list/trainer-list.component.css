@@ -191,8 +191,13 @@ background: #ddd;
 .modal .modal-dialog {
 max-width: 400px;
 }
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+.modal .modal-body, .modal .modal-footer {
 padding: 20px 30px;
+}
+.modal .modal-header{
+    padding: 20px 30px;
+    background-color: #000;
+    color: #fff;
 }
 .modal .modal-content {
 border-radius: 1px;
@@ -219,3 +224,6 @@ min-width: 100px;
 .modal form label {
 font-weight: normal;
 } 
+.btn-close {
+    background-color: #fff;
+}

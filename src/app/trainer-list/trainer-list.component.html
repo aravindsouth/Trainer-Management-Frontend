@@ -98,19 +98,19 @@
             <form [formGroup]="employmentForm" (ngSubmit)="onSubmit(employmentForm.value)">
                 <div class="modal-header">
                     <h5 class="modal-title">Assign - Employment Type</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close_modal()"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">   
                         <!-- <input type="email" class="form-control" required> -->
-                            <label>Type of Employment</label>
+                        <label for="employmentType" class="form-label">Type of Employment</label>
                             <select class="form-select" aria-label="Default select example" formControlName="employmentType">
-                                <!-- <option selected >Select</option> -->
-                                <option value="Industry Expert">Industry Expert</option>
-                                <option value="Internal">Internal</option>
-                                <option value="Empanelled">Empanelled</option>
-                              </select>
+                               <option value=""></option>
+                               <option value="Industry Expert">Industry Expert</option>
+                               <option value="Internal">Internal</option>
+                               <option value="Empanelled">Empanelled</option>
+                            </select>
+                            <small *ngIf= "employmentType?.invalid  && employmentType?.touched" class="text-danger">Select type of employment</small>
                               
                             <!-- <input list="employmentTypes" formControlName="employmentType">
                             <datalist id="employmentTypes">
@@ -121,11 +121,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button> -->
-                    <button type="submit" class="btn btn-primary">Assign</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close_modal()">Close</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="employmentForm.invalid">Assign</button>
                     <p>Assigning will send email notification to the trainer</p>
                 </div>
             </form>
