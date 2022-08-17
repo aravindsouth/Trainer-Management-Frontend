@@ -5,16 +5,64 @@
   </div> 
 
   <div class="row card-group w-100 p-3">
-    <div class="col-4" *ngFor="let trainer of trainers | filter:searchText">
-      <div class="card">
-       <div class="card-header"><h5>{{trainer.name}}</h5></div>
+    <div class="col-6" *ngFor="let trainer of trainers | filter:searchText">
+      <div class="card shadow border-secondary">
+       <div class="card-header bg-dark text-white"><h5>{{trainer.name}}</h5></div>
         <div class="card-pos">
-        <p class="card-text">Trainer ID : {{trainer.trainer_id}}</p>
-        <p class="card-text">Email : {{trainer.email}}</p>
-        <p class="card-text">Employement Type : {{trainer.employment_type}}</p>
-        <p class="card-text">Courses Handling : {{trainer.courses}}</p>
-       <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setTrainer(trainer.email)" >Assign Course</button>&nbsp;
+          <table class="table">
+            
+            <tr>
+              
+              <th class="py-1">
+                Approval Status : 
+              </th>
+              <td *ngIf="trainer.approved" class="bg-success text-white text-center">Approved</td>
+              <td *ngIf="!trainer.approved" class="bg-danger text-white text-center">Not Approved</td>
+            </tr>
+
+            <tr>
+              
+              
+              <th>
+                Trainer ID : 
+              </th>
+              <td>
+                {{trainer.trainer_id}}
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Email : 
+              </th>
+              <td>
+                {{trainer.email}}
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Employement Type : 
+              </th>
+              <td>
+                {{trainer.employment_type}}
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Courses Handling : 
+              </th>
+              <td>
+                {{trainer.courses}}
+              </td>
+            </tr>
+          </table>
+        
+       <div class="card-footer bg-econdary d-flex justify-content-between">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setTrainer(trainer.email)" >Assign Course</button>&nbsp;
        <button class="btn btn-primary">Update Course Details</button>
+       </div>
     </div>
     </div><br>
    </div>

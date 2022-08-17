@@ -1,9 +1,45 @@
 body {
     color: #566787;
 background: #f5f5f5;
-font-family: 'Varela Round', sans-serif;
+font-family: 'Roboto', sans-serif;
 font-size: 13px;
 }
+
+/* Toggle switch */
+.switch-toggle input {
+    display: none;
+}
+.switch-toggle label {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 20px;
+    background:#555555;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+.switch-toggle label:before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: #3120E0;
+    border-radius: 50%;
+    transition: left 200ms linear;
+}
+
+.switch-toggle input:checked + label {
+    background: #7DCE13;
+}
+.switch-toggle input:checked + label:before {
+    left: 25px;
+    background: #3120E0;
+}
+
 .table-wrapper {
     background: #fff;
     padding: 20px 25px;

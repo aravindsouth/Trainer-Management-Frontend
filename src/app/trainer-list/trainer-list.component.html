@@ -16,13 +16,13 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Contact</th>
-                    <th>Approval</th>
+                    <th>Approve</th>
                     <th>Assign Employment</th>
                     <th class="text-center">View</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let trainer of trainers | filter:searchText">
+                <tr *ngFor="let trainer of trainers | filter:searchText; let i = index">
                     <td>{{trainer.trainer_id}}</td>
                     <td>{{trainer.name}}</td>
                     <td>
@@ -36,9 +36,14 @@
                           </svg>
                         {{trainer.phone}}
                     </td>
-                    <td>
-                        <button class="btn btn-warning" [disabled]="trainer.approved"
-                            (click)="trainerApproval(trainer.email)">Approve</button>
+                    <td class="text-center">
+                        <!-- <button class="btn btn-warning" [disabled]="trainer.approved"
+                            (click)="trainerApproval(trainer.email)">Approve</button> -->
+                        
+                        <div class="switch-toggle" id="trainer.email + i">
+                            <input type="checkbox" name="" id="i">
+                            <label for="i"></label>
+                        </div>
                     </td>
                     <td>
                         <!-- <a href="#viewTrainerModal" class="view" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="View">&#xF1c5;</i></a> -->
@@ -52,7 +57,8 @@
 
                             
                             <!-- <label for="employment"><small>Type of Employment:</small></label>
-                            <select name="employment" formControlName="employmentType" id="employmentTypes" >
+                            <select name="employment" formControlName="employmentType" id="employmentTypes" 
+                            [disabled]="!trainer.approved || trainer.employment_type">
                                 <option value="Industry Expert">Industry Expert</option>
                                 <option value="Internal">Internal</option>
                                 <option value="Empanelled">Empanelled</option>

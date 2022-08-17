@@ -101,7 +101,7 @@ export class TrainerEnrollComponent implements OnInit {
       console.log(file);
       if (file.type === "image/jpeg" || file.type === "image/png") {
         console.log("correct format");        
-        this.uploadImage = file;
+        this.trainerData.photo = file;
       }
       else {
         this.photo?.reset();
@@ -115,9 +115,9 @@ export class TrainerEnrollComponent implements OnInit {
  
   enrollSubmit() {
 
-    //for uploading image
+    //for uploading image path
     const formData = new FormData();
-    formData.append('file', this.uploadImage);
+    formData.append('photo', this.trainerData.photo);
     
     this.http.post<any>('http://localhost:3000/uploadphoto', formData).subscribe(
       (res) => console.log(res),
