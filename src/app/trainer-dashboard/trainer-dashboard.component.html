@@ -14,7 +14,7 @@
 
         <div class="items mt-3 px-2 text-start">
 
-            <a routerLink="/trainer-dashboard">
+            <a id="sidelink3" [routerLink]="[{ outlets: { trainerTarget: 'trainer-landing' } } ]">
                 <li>
                     <i>
                         <svg class="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mx-2 bi bi-speedometer" viewBox="0 0 16 16">
@@ -26,7 +26,7 @@
                 </li>
             </a>
 
-            <a href="">
+            <a id="sidelink3" [routerLink]="[{ outlets: { trainerTarget: 'view-schedule' } } ]">
                 <li>
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -39,7 +39,7 @@
                 </li>
             </a>
 
-            <a href="#">
+            <a id="sidelink3" [routerLink]="[{ outlets: { trainerTarget: 'view-course' } } ]">
                 <li>
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -81,14 +81,11 @@
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </i>
-                <div class="search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class=" mx-2 bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                    <input type="text" name="" id="" placeholder="Search">
-                </div>
+                
+            </div>
+
+            <div>
+                <h4>Trainer Dashboard</h4>
             </div>
 
             <div class="profile">
@@ -129,16 +126,14 @@
             </div>
         </div>
 
-        <h3 class="i-name shadow px-4">
-            Trainer Dashboard
-        </h3>
-
         <div class="stats">
             <div class="stat-box border shadow">
 
             </div>
         </div>
-        <router-outlet name="trainerTarget"></router-outlet>
+        <div id="target" class="border">
+            <router-outlet name="trainerTarget"></router-outlet>
+        </div>
     </section>
 
 

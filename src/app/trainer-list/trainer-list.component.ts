@@ -27,6 +27,10 @@ export class TrainerListComponent implements OnInit {
     
   }
 
+  test(){
+    
+  }
+
   trainerApproval(trainer_email) {
     console.log(trainer_email)
     this._auth.trainerApprove(trainer_email)

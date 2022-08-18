@@ -40,8 +40,13 @@
                         <!-- <button class="btn btn-warning" [disabled]="trainer.approved"
                             (click)="trainerApproval(trainer.email)">Approve</button> -->
                         
-                        <div class="switch-toggle" id="trainer.email + i">
-                            <input type="checkbox" name="" id="i">
+                        <div class="switch-toggle">
+                            <input type="checkbox" id="i"
+                            value="{{trainer.approved}}"
+                            [(ngModel)]="trainer[i].checked"
+                            [checked]="trainer.select"
+                            (change)="test()">
+                            
                             <label for="i"></label>
                         </div>
                     </td>

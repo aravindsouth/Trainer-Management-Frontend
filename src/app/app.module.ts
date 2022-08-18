@@ -25,6 +25,18 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
+import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
+import { TrainerLandingComponent } from './trainer-landing/trainer-landing.component';
+import { ViewCourseComponent } from './view-course/view-course.component';
+
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 
 
@@ -38,7 +50,10 @@ import { TrainerViewComponent } from './trainer-view/trainer-view.component';
     AdminDashboardComponent,
     TrainerListComponent,
     CourseAllocationComponent,
-    TrainerViewComponent
+    TrainerViewComponent,
+    ViewScheduleComponent,
+    TrainerLandingComponent,
+    ViewCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +64,8 @@ import { TrainerViewComponent } from './trainer-view/trainer-view.component';
     ShowHidePasswordModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    FullCalendarModule
   ],
   providers: [AuthService, TokenInterceptorService,
 

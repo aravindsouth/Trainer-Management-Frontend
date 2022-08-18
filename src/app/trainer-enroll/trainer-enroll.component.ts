@@ -32,7 +32,7 @@ export class TrainerEnrollComponent implements OnInit {
     /* ------ Get trainer details from db */
     this._auth.trainerProfile(this.trainerEmail)
       .subscribe((data) => {
-        console.log(data);
+        // console.log(data);
         this.trainerData = data;
       })
 
@@ -97,7 +97,8 @@ export class TrainerEnrollComponent implements OnInit {
   uploadImage: any;
   onImageChangeFromFile($event: any) {
     if ($event.target.files && $event.target.files[0]) {
-      let file = $event.target.files[0];
+      const file = $event.target.files[0];
+      let filepath = file.path;
       console.log(file);
       if (file.type === "image/jpeg" || file.type === "image/png") {
         console.log("correct format");        
@@ -119,6 +120,7 @@ export class TrainerEnrollComponent implements OnInit {
     const formData = new FormData();
     formData.append('photo', this.trainerData.photo);
     
+    //foruploading photo
     this.http.post<any>('http://localhost:3000/uploadphoto', formData).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
@@ -127,7 +129,7 @@ export class TrainerEnrollComponent implements OnInit {
     //for updating info --------------    
     this._auth.trainerUpdate(this.trainerData)
       .subscribe((data) => {
-        console.log(data);
+        // console.log(data);
         alert('Trainer Data Updated');
         this.trainerData = data;
         this._router.navigate(["/trainer-dashboard/(trainerTarget:enroll)"]);

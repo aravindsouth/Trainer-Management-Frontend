@@ -9,24 +9,30 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
+import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
+import { TrainerLandingComponent } from './trainer-landing/trainer-landing.component';
+import { ViewCourseComponent } from './view-course/view-course.component';
 
 
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full' },
-  { path:'login', component:LoginComponent },
-  { path:'signup', component:SignupComponent },
+  { path:'login', component: LoginComponent },
+  { path:'signup', component: SignupComponent },
   { 
-    path:'trainer-dashboard', component:TrainerDashboardComponent,
+    path:'trainer-dashboard', component: TrainerDashboardComponent,
     children: [
-      { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" }
+      { path:"trainer-landing", component: TrainerLandingComponent, outlet: "trainerTarget" },
+      { path:"view-schedule", component: ViewScheduleComponent, outlet: "trainerTarget" },
+      { path:"view-course", component: ViewCourseComponent, outlet: "trainerTarget" },
+      { path:"enroll", component: TrainerEnrollComponent, outlet: "trainerTarget" } 
     ]
   },
-  { path:'admin-dashboard', component:AdminDashboardComponent,
+  { path:'admin-dashboard', component: AdminDashboardComponent,
     children: [
-      { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"},
-      { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
+      { path:'trainer-list', component: TrainerListComponent, outlet: "adminTarget"},
+      { path:"course-allocation",component: CourseAllocationComponent, outlet: "adminTarget" }
     ] },
-    { path:'trainer-view', component:TrainerViewComponent },
+    { path:'trainer-view', component: TrainerViewComponent },
 
 ];
 
@@ -40,5 +46,4 @@ export const routingComponents = [
   LoginComponent,
   SignupComponent,
   TrainerDashboardComponent,
-  TrainerEnrollComponent,
  ]
