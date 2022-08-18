@@ -18,8 +18,9 @@ export class AuthService {
     return this.http.post<any>(this.baseUri+"signup", trainer);
   }
 
-  trainerUpdate(trainer: any) {
-    return this.http.put<any>(this.baseUri+"enroll", trainer);
+  trainerUpdate(trainer: any, pic_url: string) {
+    console.log("service side", pic_url)
+    return this.http.put<any>(this.baseUri+"enroll", {trainer, pic_uri: pic_url});
     
   }
 

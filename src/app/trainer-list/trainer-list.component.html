@@ -18,6 +18,7 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Contact</th>
+                    <th>Employment Type</th>
                     <th>Approved</th>
                     <th>Actions</th>
                 </tr>
@@ -30,6 +31,7 @@
                         Email: <em>{{trainer.email}}</em><br>
                         Phone: {{trainer.phone}}
                     </td>
+                    <td>{{trainer.employment_type}}</td>
                     <td>
                         <button class="btn btn-warning" [disabled]="trainer.approved"
                             (click)="trainerApproval(trainer.email)">Approve</button>

@@ -111,13 +111,13 @@ export class TrainerViewComponent implements OnInit {
   // update trainer profile
   enrollSubmit() {
     
-    this._auth.trainerUpdate(this.trainerData)
-      .subscribe((data) => {
-        console.log(data);
-        alert('Trainer Data Updated');
-        this.trainerData = data;
-        this._router.navigate(["/trainer-dashboard/(trainerTarget:enroll)"]);
-      });
+    // this._auth.trainerUpdate(this.trainerData)
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //     alert('Trainer Data Updated');
+    //     this.trainerData = data;
+    //     this._router.navigate(["/trainer-dashboard/(trainerTarget:enroll)"]);
+    //   });
       
   }
 }
