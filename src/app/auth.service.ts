@@ -42,14 +42,14 @@ export class AuthService {
   }
   
   trainerApprove(trainer_email) {
-    return this.http.put<any>(this.baseUri+"approve-trainer", {email: trainer_email})
+    return this.http.put<any>(this.baseUri+"trainer-update/approve-trainer", {email: trainer_email})
   }
 
   courseAllocate(course) {
-    return this.http.put<any>(this.baseUri+"add-course", course)
+    return this.http.put<any>(this.baseUri+"trainer-update/add-course", course)
   }
 
   assignEmployment(value) {
-    return this.http.put<any>(this.baseUri+"set-employment-type", value)
+    return this.http.put<any>(this.baseUri+"trainer-update/set-employment-type", value)
   }
 }
