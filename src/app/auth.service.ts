@@ -18,8 +18,9 @@ export class AuthService {
     return this.http.post<any>(this.baseUri+"signup", trainer);
   }
 
-  trainerUpdate(trainer: any) {
-    return this.http.put<any>(this.baseUri+"enroll", trainer);
+  trainerUpdate(trainer: any, pic_url: string) {
+    console.log("service side", pic_url)
+    return this.http.put<any>(this.baseUri+"enroll", {trainer, pic_uri: pic_url});
     
   }
 
@@ -36,19 +37,23 @@ export class AuthService {
     // return this.http.get<any>(this.baseUri+"trainer-profile",{params:{"trainer_email": trainer_email}})
     return this.http.get<any>(this.baseUri+"trainer-profile/"+trainer_email)
   }
+
+  trainerView(trainer_email: any) {
+    return this.http.get<any>(this.baseUri+"trainer-view/"+trainer_email)
+  }
   getTrainers() {
     return this.http.get<any>(this.baseUri+"trainers");
   }
   
   trainerApprove(trainer_email) {
-    return this.http.put<any>(this.baseUri+"approve-trainer", {email: trainer_email})
+    return this.http.put<any>(this.baseUri+"trainer-update/approve-trainer", {email: trainer_email})
   }
 
   courseAllocate(course) {
-    return this.http.put<any>(this.baseUri+"add-course", course)
+    return this.http.put<any>(this.baseUri+"trainer-update/add-course", course)
   }
 
   assignEmployment(value) {
-    return this.http.put<any>(this.baseUri+"set-employment-type", value)
+    return this.http.put<any>(this.baseUri+"trainer-update/set-employment-type", value)
   }
 }

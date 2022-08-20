@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import * as AOS from 'aos';
+// import * as AOS from 'aos';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   constructor(private _router:Router, private formBuilder:FormBuilder, private _auth: AuthService) { }
 
   ngOnInit(): void {
-    AOS.init();
+ // AOS.init();
 
     /* ---------- Registration form validation -------------- */
 
@@ -34,11 +34,12 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       mobile: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
       hqual: ['', [Validators.required, Validators.minLength(2)]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,20}$/gm)]],
+      //password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,20}$/gm)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,20}$/)]],
       cpassword: ['', Validators.required]
 
     })
-
+   
     
   }
 

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as AOS from 'aos';
+//import * as AOS from 'aos';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AuthService } from '../auth.service';
+import {Storage, getStorage, ref, getDownloadURL, uploadBytesResumable} from '@angular/fire/storage'
+import { initializeApp } from 'firebase/app';
 
 
 @Component({
@@ -14,8 +16,10 @@ import { AuthService } from '../auth.service';
 export class TrainerEnrollComponent implements OnInit {
   dropdownList;
   dropdownSettings;
-
-  constructor(private _router: Router, private _auth: AuthService) { }
+  
+  public image_file: any = {}
+  public profile_pic!: string
+  constructor(private _router: Router, private _auth: AuthService, public storage: Storage, private _ngZone: NgZone) { }
 
   trainerData: any = { name: '', address: '', email: '', dob: '', phone: '', photo: '', highestqual: '', skills: '', company: '', designation: '', courses: '' };
   trainerEmail: string | null = localStorage.getItem('trainer_email');
@@ -26,7 +30,7 @@ export class TrainerEnrollComponent implements OnInit {
 
    
 
-    AOS.init();
+    //AOS.init();
 
     /* ------ Get trainer details from db */
     this._auth.trainerProfile(this.trainerEmail)
@@ -97,7 +101,8 @@ export class TrainerEnrollComponent implements OnInit {
     if ($event.target.files && $event.target.files[0]) {
       let file = $event.target.files[0];
       console.log(file);
-      if (file.type == "image/jpeg") {
+      if (file.type == "image/jpeg" || "image/png") {
+        this.image_file = file;
         console.log("correct format");
       }
       else {
@@ -110,14 +115,54 @@ export class TrainerEnrollComponent implements OnInit {
 
   // update trainer profile
   enrollSubmit() {
-    
-    this._auth.trainerUpdate(this.trainerData)
-      .subscribe((data) => {
-        console.log(data);
-        alert('Trainer Data Updated');
-        this.trainerData = data;
-        this._router.navigate(["/trainer-dashboard/(trainerTarget:enroll)"]);
+    // file upload
+    const storageRef = ref(this.storage, this.image_file.name)
+    const uploadTask = uploadBytesResumable(storageRef, this.image_file);
+    uploadTask.on('state_changed',
+    (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case 'paused':
+          console.log('Upload is paused');
+          break;
+        case 'running':
+          console.log('Upload is running');
+          break;
+      }
+    },
+    (error) => {
+      // Handle unsuccessful uploads
+      console.log(error)
+      alert("file upload error")
+    }, 
+    () => {
+      // Handle successful uploads on complete
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        this.profile_pic = downloadURL
+        console.log(this.profile_pic)
+        console.log('File available at', downloadURL);
+        console.log("enroll form data: ",this.trainerData)
+        this._auth.trainerUpdate(this.trainerData, this.profile_pic)
+        .subscribe((data) => {
+          console.log(data);
+          alert('Trainer Data Updated');
+          this.trainerData = data;
+          this._ngZone.run(() => { 
+          this._router.navigate(["/trainer-dashboard"]);
+          window.location.reload();
+         });
+          
+        });
+        
       });
+    }
+    
+   
+   
+    )
       
   }
 

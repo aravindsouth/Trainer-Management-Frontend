@@ -1,3 +1,8 @@
+
+<div class="w-25 p-3" >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText"  placeholder="Search">
+</div> 
+
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
@@ -13,18 +18,20 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Contact</th>
-                    <th>Approved</th>
+                    <th>Employment Type</th>
+                    <th>Approval</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let trainer of trainers">
+                <tr *ngFor="let trainer of trainers | filter:searchText">
                     <td>{{trainer.trainer_id}}</td>
-                    <td><a routerLink="/trainer-view">{{trainer.name}}</a></td>
+                    <td><a [routerLink] = "['/trainer-view', trainer.email]">{{trainer.name}}</a></td>
                     <td>
                         Email: <em>{{trainer.email}}</em><br>
                         Phone: {{trainer.phone}}
                     </td>
+                    <td>{{trainer.employment_type}}</td>
                     <td>
                         <button class="btn btn-warning" [disabled]="trainer.approved"
                             (click)="trainerApproval(trainer.email)">Approve</button>
@@ -93,26 +100,31 @@
             <form [formGroup]="employmentForm" (ngSubmit)="onSubmit(employmentForm.value)">
                 <div class="modal-header">
                     <h5 class="modal-title">Assign - Employment Type</h5>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close_modal()"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">   
                         <!-- <input type="email" class="form-control" required> -->
-                            <label>Type of Employment</label>
-                            <input list="employmentTypes" formControlName="employmentType">
+                        <label for="employmentType" class="form-label">Type of Employment</label>
+                            <select class="form-select" aria-label="Default select example" formControlName="employmentType">
+                               <option value=""></option>
+                               <option value="Industry Expert">Industry Expert</option>
+                               <option value="Internal">Internal</option>
+                               <option value="Empanelled">Empanelled</option>
+                            </select>
+                            <small *ngIf= "employmentType?.invalid  && employmentType?.touched" class="text-danger">Select type of employment</small>
+                              
+                            <!-- <input list="employmentTypes" formControlName="employmentType">
                             <datalist id="employmentTypes">
                               <option value="Industry Expert">
                               <option value="Internal">
                               <option value="Empanelled">
-                            </datalist>
+                            </datalist> -->
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <button type="submit">Assign</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close_modal()">Close</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="employmentForm.invalid">Assign</button>
                     <p>Assigning will send email notification to the trainer</p>
                 </div>
             </form>

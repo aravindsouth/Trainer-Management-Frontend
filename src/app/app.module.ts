@@ -26,6 +26,10 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+
 
 
 
@@ -51,7 +55,9 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
     ShowHidePasswordModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [AuthService, TokenInterceptorService,
 
