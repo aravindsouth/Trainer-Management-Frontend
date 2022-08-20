@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as AOS from 'aos';
+//import * as AOS from 'aos';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AuthService } from '../auth.service';
 import {Storage, getStorage, ref, getDownloadURL, uploadBytesResumable} from '@angular/fire/storage'
@@ -30,7 +30,7 @@ export class TrainerEnrollComponent implements OnInit {
 
    
 
-    AOS.init();
+    //AOS.init();
 
     /* ------ Get trainer details from db */
     this._auth.trainerProfile(this.trainerEmail)

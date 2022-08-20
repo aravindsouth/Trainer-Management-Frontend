@@ -1,15 +1,28 @@
-<section>
+<div class="container">
+<div>
+    <div class="logo">
+        <img src="../assets/logos/cropped-ict-ico.png" width=35px height=50px alt="">
+    </div> 
+
+    <div class="items">
+        <li><svg class="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
+            <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+            <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+          </svg> <a routerLink="/admin-dashboard">Dashboard</a></li>        
+    </div>
+</div>
+<div style="display: float;">
     <div class="container-fluid m-1">
       
       <div class="row">
         <div class="col text-center">
-          <button class="btn btn-success mx-4 my-2 px-4" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
+          <!-- <button class="btn btn-success mx-4 my-2 px-4" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
             Update Profile
-          </button>
+          </button> -->
         </div>
       </div>
   
@@ -117,126 +130,5 @@
       </div>
       
     </div>
-  </section>
-  
-  <div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header bg-dark text-white">
-            <h3 class="modal-title">Trainer Profile Update</h3>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"> </button>
-        </div>
-        <form [formGroup]="enroll_form" (ngSubmit)="enrollSubmit()">
-        <div class="modal-body">
-          <div class="form-body">  
-            
-              <div class="row mb-3">
-                <label for="t_id" class="col-sm-4 col-form-label">Trainer ID</label>
-                <div class="col-sm-8">
-                  <input class="form-control" type="text" name="t_id" 
-                  formControlName="t_id" readonly>
-                </div>
-              </div>
-                <div class="row mb-3">
-                    <label for="fname" class="col-sm-4 col-form-label ">FullName</label>
-                    <div class="col-sm-8">
-                      <input class="form-control disabled" type="text" name="fname" 
-                      value="{{trainerData.name}}" formControlName="fname" readonly>  
-                    </div>
-                  </div>
-                <div class="row mb-3">
-                  <label for="email" class="col-sm-4 col-form-label">Email</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="email" name="email" 
-                    value="{{trainerData.email}}" formControlName="email" readonly>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="phone" class="col-sm-4 col-form-label">Phone No.</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text" name="phone" 
-                    value="{{trainerData.phone}}" formControlName="phone" readonly>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="address" class="col-sm-4 col-form-label">Address</label>
-                    <div class="col-sm-8">
-                        <textarea class="form-control" id="address" 
-                        rows="3" name="address" formControlName="address" 
-                        [(ngModel)]="trainerData.address"></textarea>
-                        <small *ngIf= "address?.invalid  && address?.touched" class="text-danger">Address required</small>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="photo" class="col-sm-4 col-form-label">Upload Photo</label>
-                    <div class="col-sm-8"> 
-                        <input (change)="onImageChangeFromFile($event)" 
-                        class="form-control" type="file" id="formFile" 
-                        name="photo" formControlName="photo" [(ngModel)]="trainerData.photo">
-                        <small *ngIf= "photo?.hasError('required')" class="text-danger">Photo should be in JPEG format</small>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="hqual" class="col-sm-4 col-form-label">Highest Qualification</label>
-                    <div class="col-sm-8">
-                      <input class="form-control" type="text" name="hqual" 
-                      value="{{trainerData.highestqual}}" formControlName="hqual" readonly>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="skills" class="col-sm-4 col-form-label">Skills</label>
-                    <div class="col-sm-8">
-                      <textarea class="form-control" id="skills" 
-                      rows="3" name="skills" formControlName="skills"
-                      [(ngModel)]="trainerData.skills"></textarea>
-                      <small *ngIf= "skills?.invalid  && skills?.touched" class="text-danger">Skills required</small>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="company" class="col-sm-4 col-form-label">Current Company Name</label>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" id="company" 
-                      name="company" formControlName="company"
-                      [(ngModel)]="trainerData.company">
-                      <small *ngIf= "company?.invalid  && company?.touched" class="text-danger">Company name required</small>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="desig" class="col-sm-4 col-form-label">Current Designation</label>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" id="desig" 
-                      name="desig" formControlName="desig"
-                      [(ngModel)]="trainerData.designation">
-                      <small *ngIf= "desig?.invalid  && desig?.touched" class="text-danger">
-                        <small *ngIf= "desig?.hasError('required')" class="text-danger">Current designation required</small>
-                      <small *ngIf= "desig?.hasError('pattern')" class="text-danger">Should not contain digits or special characters</small>
-                      </small>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="courses" class="col-sm-4 col-form-label">ICTAK Courses Handling</label>
-                    <div class="col-sm-8">
-                      
-                      <ng-multiselect-dropdown name="courses" formControlName="courses"
-                      [placeholder]="'Select Courses'"
-                      [settings]= "dropdownSettings"
-                      [data]= "dropdownList"
-                      (onSelect)= "onItemSelect($event)"
-                       >
-                    </ng-multiselect-dropdown>
-                    <small *ngIf= "courses?.invalid  && courses?.touched" class="text-danger">Select atleast one course</small>
-                    </div>
-                  </div>
-              
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-          <!-- [disabled]="enroll_form.invalid" -->
-        </div>
-      </form>
-      </div>
-    </div>
   </div>
-  
+  </div>

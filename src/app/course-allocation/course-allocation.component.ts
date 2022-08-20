@@ -30,11 +30,29 @@ export class CourseAllocationComponent implements OnInit {
       'schedule':new FormControl('',Validators.required),
     });
 
+    this.getDate();
+
     this._auth.getTrainers()
     .subscribe((data) => {
       this.trainers = data;
       console.log(this.trainers)
     })
+  }
+
+  minDate:any =""
+  getDate() {
+    var date:any = new Date();
+    var toDate: any = date.getDate();
+    if(toDate < 10) {
+      toDate = "0" + toDate;
+    }
+    var month = date.getMonth() + 1;
+    if(month < 10) {
+      month = "0" + month;
+    }
+    var year = date.getFullYear();
+    this.minDate = year + "-" + month + "-" + toDate;
+    console.log(this.minDate);
   }
 
  

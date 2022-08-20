@@ -19,14 +19,14 @@
                     <th>Name</th>
                     <th>Contact</th>
                     <th>Employment Type</th>
-                    <th>Approved</th>
+                    <th>Approval</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let trainer of trainers | filter:searchText">
                     <td>{{trainer.trainer_id}}</td>
-                    <td><a routerLink="/trainer-view">{{trainer.name}}</a></td>
+                    <td><a [routerLink] = "['/trainer-view', trainer.email]">{{trainer.name}}</a></td>
                     <td>
                         Email: <em>{{trainer.email}}</em><br>
                         Phone: {{trainer.phone}}

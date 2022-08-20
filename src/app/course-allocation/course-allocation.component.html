@@ -1,4 +1,4 @@
-<div class="course-alloc ">
+<!-- <div class="course-alloc ">
 
   <div class="w-25 p-3" >
     <input class="form-control" type="text" name="search" [(ngModel)]="searchText"  placeholder="Search courses...">
@@ -19,7 +19,101 @@
     </div><br>
    </div>
   </div>
+</div> -->
+
+
+
+<div class="course-alloc ">
+
+  <div class="w-25 p-3" >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText"  placeholder="Search courses...">
+  </div> 
+
+  <div class="row card-group w-100 p-3">
+    <div class="col-6" *ngFor="let trainer of trainers | filter:searchText">
+      <div class="card shadow border-secondary">
+       <div class="card-header bg-dark text-white"><h5>{{trainer.name}}</h5></div>
+        <div class="card-pos">
+          <table class="table">
+            
+            <tr>
+              
+              <th class="py-1 col-5">
+                Approval Status : 
+              </th>
+              <td *ngIf="trainer.approved" class="bg-success rounded text-white text-center">Approved</td>
+              <td *ngIf="!trainer.approved" class="bg-danger rounded text-white text-center">Not Approved</td>
+            </tr>
+
+            <tr>
+              
+              
+              <th>
+                Trainer ID : 
+              </th>
+              <td>
+                {{trainer.trainer_id}}
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Email : 
+              </th>
+              <td>
+                {{trainer.email}}
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Employement Type : 
+              </th>
+              <td>
+                {{trainer.employment_type}}
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Preferred Courses: 
+              </th>
+              <td>
+                {{trainer.courses}}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Allocated Courses: 
+              </th>
+              <td>
+                <div *ngFor="let courses of trainer.ict_courses_data">
+                  <span>{{courses.course_id}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Batches Allocated: 
+              </th>
+              <td>
+                <div *ngFor="let courses of trainer.ict_courses_data">
+                  <span>{{courses.batch_id}}</span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        
+       <div class="card-footer bg-econdary d-flex justify-content-between">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setTrainer(trainer.email)" >Assign Course</button>&nbsp;
+       <button class="btn btn-primary">Update Course Details</button>
+       </div>
+    </div>
+    </div><br>
+   </div>
+  </div>
 </div>
+
 
 
 <!-- Modal -->
@@ -54,18 +148,18 @@
             <input type="text" class="form-control" id="coursename" formControlName="course_name" *ngIf="course_alloc_form.get('course_id')?.value == '02_FSD'" value="Full Stack" readonly>             -->
           </div>
           <div class="input-group-sm mb-3">
-            <label for="batchid" class="form-label">Batch ID</label>
+            <label for="batchid" class="form-label required-field">Batch ID</label>
             <input type="text" class="form-control" id="batchid" formControlName="batch_id">
             <small *ngIf= "batch_id?.invalid  && batch_id?.touched" class="text-danger">Batch ID required</small>
           </div>
           <div class="input-group-sm mb-3">
             <label for="startdate" class="form-label">Start Date</label>
-            <input type="date" class="form-control" id="startdate" formControlName="start_date">
+            <input type="date" class="form-control" id="startdate" formControlName="start_date" min="{{minDate}}">
             <small *ngIf= "start_date?.invalid  && start_date?.touched" class="text-danger">Start Date required</small>
           </div>
           <div class="input-group-sm mb-3">
             <label for="enddate" class="form-label">End Date</label>
-            <input type="date" class="form-control" id="enddate" formControlName="end_date" >
+            <input type="date" class="form-control" id="enddate" formControlName="end_date" min="{{minDate}}">
             <small *ngIf= "end_date?.invalid  && end_date?.touched" class="text-danger">End Date required</small>
           </div>
           <div class="input-group-sm mb-3">

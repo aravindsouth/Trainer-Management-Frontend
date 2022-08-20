@@ -26,7 +26,7 @@ const routes: Routes = [
       { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"},
       { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
     ] },
-    { path:'trainer-view', component:TrainerViewComponent },
+    { path:'trainer-view/:email', component:TrainerViewComponent },
 
 ];
 
