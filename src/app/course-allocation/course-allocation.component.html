@@ -128,8 +128,8 @@
         
         <form [formGroup]="course_alloc_form">
           <div class="input-group-sm mb-3">
-            <label for="courseid" class="form-label">Course ID</label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList" formControlName="course_id">
+            <label for="courseid" class="form-label required-field">Course ID</label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" formControlName="course_id" required>
               <datalist id="datalistOptions">
                <option value="01_DSA">
                <option value="02_FSD">
@@ -149,31 +149,31 @@
           </div>
           <div class="input-group-sm mb-3">
             <label for="batchid" class="form-label required-field">Batch ID</label>
-            <input type="text" class="form-control" id="batchid" formControlName="batch_id">
+            <input type="text" class="form-control" id="batchid" formControlName="batch_id" required>
             <small *ngIf= "batch_id?.invalid  && batch_id?.touched" class="text-danger">Batch ID required</small>
           </div>
           <div class="input-group-sm mb-3">
-            <label for="startdate" class="form-label">Start Date</label>
-            <input type="date" class="form-control" id="startdate" formControlName="start_date" min="{{minDate}}">
+            <label for="startdate" class="form-label required-field">Start Date</label>
+            <input type="date" class="form-control" id="startdate" formControlName="start_date" min="{{minDate}}" required>
             <small *ngIf= "start_date?.invalid  && start_date?.touched" class="text-danger">Start Date required</small>
           </div>
           <div class="input-group-sm mb-3">
-            <label for="enddate" class="form-label">End Date</label>
-            <input type="date" class="form-control" id="enddate" formControlName="end_date" min="{{minDate}}">
+            <label for="enddate" class="form-label required-field">End Date</label>
+            <input type="date" class="form-control" id="enddate" formControlName="end_date" min="{{minDate}}" required>
             <small *ngIf= "end_date?.invalid  && end_date?.touched" class="text-danger">End Date required</small>
           </div>
           <div class="input-group-sm mb-3">
-            <label for="coursetime" class="form-label">Time</label>
-            <input type="time" class="form-control" id="coursetime" formControlName="course_time">
+            <label for="coursetime" class="form-label required-field">Time</label>
+            <input type="time" class="form-control" id="coursetime" formControlName="course_time" required>
             <small *ngIf= "course_time?.invalid  && course_time?.touched" class="text-danger">Class Time required</small>
           </div>
-          <div class="input-group-sm mb-3">
+          <div class="input-group-sm mb-3 required-field">
             <label for="meetlink" class="form-label">Meeting Link</label>
-            <input type="text" class="form-control" id="meetlink" formControlName="meetlink">
+            <input type="text" class="form-control" id="meetlink" formControlName="meetlink" required>
             <small *ngIf= "meetlink?.invalid  && meetlink?.touched" class="text-danger">Meeting Link required</small>
           </div>
           <div class="input-group-sm mb-3">
-            <label for="schedule" class="form-label">Schedule</label>
+            <label for="schedule" class="form-label required-field">Schedule</label>
             <input type="text" class="form-control" id="schedule" formControlName="schedule">
             <small *ngIf= "schedule?.invalid  && schedule?.touched" class="text-danger">Schedule required</small>
           </div>

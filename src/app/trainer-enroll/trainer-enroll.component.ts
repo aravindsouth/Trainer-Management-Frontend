@@ -140,11 +140,11 @@ export class TrainerEnrollComponent implements OnInit {
     }, 
     () => {
       // Handle successful uploads on complete
-      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         this.profile_pic = downloadURL
         console.log(this.profile_pic)
         console.log('File available at', downloadURL);
+        console.log("enroll form data: ",this.trainerData)
         this._auth.trainerUpdate(this.trainerData, this.profile_pic)
         .subscribe((data) => {
           console.log(data);

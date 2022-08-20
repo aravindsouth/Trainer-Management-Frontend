@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,14 +10,19 @@ import { AuthService } from '../auth.service';
 })
 export class TrainerViewComponent implements OnInit {
 
+  routeParams!: Params;
+  trainerEmail!:string
 
-  constructor(private _router: Router, private _auth: AuthService) { }
+  constructor(private _router: Router, private _auth: AuthService, private activatedRoute: ActivatedRoute ) { 
+    this.getRouteParams();
+  }
 
   trainerData: any = { name: '', address: '', email: '', dob: '', phone: '', photo: '', highestqual: '', skills: '', company: '', designation: '', courses: '' };
-  trainerEmail: string | null = localStorage.getItem('trainer_email');
+  // trainerEmail: string | null = localStorage.getItem('trainer_email');
 
   ngOnInit(): void {
 
+    this.trainerEmail = this.routeParams.email;
 
     /* ------ Get trainer details from db */
     this._auth.trainerView(this.trainerEmail)
@@ -26,6 +31,13 @@ export class TrainerViewComponent implements OnInit {
         this.trainerData = data;
       })
 
+  }
+
+  getRouteParams() {
+    this.activatedRoute.params.subscribe(params => {
+      this.routeParams = params;
+      console.log("params are:",this.routeParams);
+    })
   }
 
 }
