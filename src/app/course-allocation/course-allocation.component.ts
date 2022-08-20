@@ -100,6 +100,7 @@ export class CourseAllocationComponent implements OnInit {
         console.log(data)
         if(data.status){
           alert(data.reason)
+          this.ngOnInit()
         }else {
           alert(data.reason)
         }

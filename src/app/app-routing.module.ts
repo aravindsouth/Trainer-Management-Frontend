@@ -9,6 +9,7 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
     ] },
     { path:'trainer-view/:email', component:TrainerViewComponent },
+    {path:'update-course/:email', component:UpdateCourseComponent}
 
 ];
 

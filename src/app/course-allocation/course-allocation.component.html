@@ -106,7 +106,7 @@
         
        <div class="card-footer bg-econdary d-flex justify-content-between">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setTrainer(trainer.email)" >Assign Course</button>&nbsp;
-       <button class="btn btn-primary">Update Course Details</button>
+        <a [routerLink]="['/update-course', trainer.email]"><button class="btn btn-primary">Update Course Details</button></a>
        </div>
     </div>
     </div><br>
@@ -129,11 +129,15 @@
         <form [formGroup]="course_alloc_form">
           <div class="input-group-sm mb-3">
             <label for="courseid" class="form-label required-field">Course ID</label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList" formControlName="course_id" required>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" formControlName="course_id" required autocomplete="off">
               <datalist id="datalistOptions">
                <option value="01_DSA">
                <option value="02_FSD">
                <option value="03_RPA">
+                <!-- <option value="">04_CSA</option>
+                <option value="">05_DM</option>
+                <option value="">06_AI</option>
+                <option value="">07_ML</option> -->
               </datalist>
               <small *ngIf= "course_id?.invalid  && course_id?.touched" class="text-danger">Course ID required</small>
             <!-- <label for="courseid" class="form-label">Course ID</label>
@@ -147,11 +151,29 @@
             <input type="text" class="form-control" id="coursename" formControlName="course_name" *ngIf="course_alloc_form.get('course_id')?.value == '01_DSA'" value="Data Science and Analytics" readonly>
             <input type="text" class="form-control" id="coursename" formControlName="course_name" *ngIf="course_alloc_form.get('course_id')?.value == '02_FSD'" value="Full Stack" readonly>             -->
           </div>
-          <div class="input-group-sm mb-3">
+<!-- Batch id starts -->
+          <!-- <div class="input-group-sm mb-3">
             <label for="batchid" class="form-label required-field">Batch ID</label>
             <input type="text" class="form-control" id="batchid" formControlName="batch_id" required>
             <small *ngIf= "batch_id?.invalid  && batch_id?.touched" class="text-danger">Batch ID required</small>
+          </div> -->
+
+          <div class="input-group-sm mb-3">
+            <label for="batchid" class="form-label required-field">Batch ID</label>
+            <input class="form-control" list="datalistOptions2" id="batchid" formControlName="batch_id" required autocomplete="off">
+              <datalist id="datalistOptions2">
+               <option value="DSA001">
+               <option value="DSA002">
+               <option value="FSD001">
+                <option value="FSD002">
+                  <option value="RPA001">
+                  <option value="RPA002">
+              </datalist>
+              <small *ngIf= "batch_id?.invalid  && batch_id?.touched" class="text-danger">Batch ID required</small>
+            <!-- <label for="courseid" class="form-label">Course ID</label>
+            <input type="text" class="form-control" id="courseid" > -->
           </div>
+          <!-- Batch Id ends -->
           <div class="input-group-sm mb-3">
             <label for="startdate" class="form-label required-field">Start Date</label>
             <input type="date" class="form-control" id="startdate" formControlName="start_date" min="{{minDate}}" required>
