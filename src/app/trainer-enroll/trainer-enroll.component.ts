@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as AOS from 'aos';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AuthService } from '../auth.service';
 
@@ -24,10 +23,6 @@ export class TrainerEnrollComponent implements OnInit {
   enroll_form!: FormGroup;
 
   ngOnInit(): void {
-
-   
-
-    AOS.init();
 
     /* ------ Get trainer details from db */
     this._auth.trainerProfile(this.trainerEmail)

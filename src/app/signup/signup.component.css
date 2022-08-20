@@ -47,20 +47,19 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-color: red;
 }
 
-.password-str-meter .indicator span.weak:before {
+.password-str-meter .indicator span.active.weak:before {
     background-color: red;
 
 }
 
-.password-str-meter .indicator span.medium:before {
+.password-str-meter .indicator span.active.medium:before {
     background-color: orange;
     
 }
 
-.password-str-meter .indicator span.strong:before {
+.password-str-meter .indicator span.active.strong:before {
     background-color: green;
     
 }
@@ -69,14 +68,14 @@ body {
     display: none;
 }
 
-.password-str-meter .strength-text .weak {
+.password-str-meter .strength-text.weak {
     color: red;
 }
 
-.password-str-meter .strength-text .medium {
+.password-str-meter .strength-text.medium {
     color: orange;
 }
 
-.password-str-meter .strength-text .strong {
+.password-str-meter .strength-text.strong {
     color: green;
 }

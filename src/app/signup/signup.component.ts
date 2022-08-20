@@ -4,6 +4,9 @@ import * as AOS from 'aos';
 import { FormControl, UntypedFormGroup, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
+//declare custom js functions
+declare function passwordStrength(input: any, indicator: any, weak: any, medium: any, strong: any, text: any):any;
+
 
 @Component({
   selector: 'app-signup',
@@ -59,19 +62,14 @@ export class SignupComponent implements OnInit {
   /* ------ PASSWORD STRENGTH METER ------- */
   isPasswordStrong() {
  
-    const input = this.registerform.get('password')?.value;
-    const indicator = this.registerform.get('.indicator')?.value;
-    const weak = this.registerform.get('.weak')?.value;
-    const medium = this.registerform.get('.medium')?.value;
-    const strong = this.registerform.get('.strong');
-    const strText = this.registerform.get('.strength-text');
-
-    console.log(input+"\n"+this.passmeter);
-
-    if(input != ""){
-      // indicator.style.display = "block";
-      // indicator.style.display = "flex";
-    }
+    // const input = this.registerform.get('password')?.value;
+    const input = document.getElementById('password');
+    const indicator = document.querySelector('.indicator');
+    const weak = document.querySelector('.weak');
+    const medium = document.querySelector('.medium');
+    const strong = document.querySelector('.strong');
+    const text = document.querySelector('.strength-text')
+    passwordStrength(input, indicator, weak, medium, strong, text);
 
   }
   
@@ -93,19 +91,6 @@ export class SignupComponent implements OnInit {
     }
 
   }
-
-  // onSubmit() {
-  //   this.submitted = true;
-
-  //   if(this.registerform.invalid){
-  //     console.log(this.registerform);
-  //     return;
-  //   }
-
-  //   else {
-  //     alert("Your information have been forwarded to the admin. The status of your enrolment will be informed via Email you have provided.");
-  //   }
-  // }
 
   onSubmit(value: any) {
     const trainer = {
