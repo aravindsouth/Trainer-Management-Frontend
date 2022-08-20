@@ -184,7 +184,7 @@ body {
         display: inline-block;
     }
     #menu.active~#interface{
-        width: calc(100%-200px);
+        width: calc(100% - 200px);
     }
 
     #interface .navigation {
