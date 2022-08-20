@@ -25,9 +25,11 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+
 
 
 
@@ -41,7 +43,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AdminDashboardComponent,
     TrainerListComponent,
     CourseAllocationComponent,
-    TrainerViewComponent
+    TrainerViewComponent,
+    UpdateCourseComponent
   ],
   imports: [
     BrowserModule,
