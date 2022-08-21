@@ -10,6 +10,10 @@ export class AuthService {
   baseUri: string = "http://localhost:3000/";
   constructor(private http: HttpClient, private _router: Router) { }
 
+  loggedIN() {
+    return !!localStorage.getItem('token');
+  }
+
   loginUser(user: any) {
     return this.http.post<any>(this.baseUri+"login", user);
   };
