@@ -36,11 +36,11 @@ export class ViewScheduleComponent implements OnInit {
           const randomColor = Math.floor(Math.random()*16777215).toString(16);
           this.calendarOptions.events = [        
                 {
-                  title: this.trainerCourse.ict_courses_data[i].course_id,
-                  description: this.trainerCourse.ict_courses_data[i].batch_id, 
+                  title: this.trainerCourse.ict_courses_data[i].course_id,                   
                   start: this.trainerCourse.ict_courses_data[i].start_date,
                   end: this.trainerCourse.ict_courses_data[i].end_date,
                   color: "#"+randomColor,
+                  description: this.trainerCourse.ict_courses_data[i].batch_id,
                 }
           ];
         }
