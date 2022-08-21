@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class ViewScheduleComponent implements OnInit {
 
 
-  events: any = [];
+  events: any = {};
   
 
   calendarOptions: CalendarOptions = {
@@ -22,30 +22,35 @@ export class ViewScheduleComponent implements OnInit {
   
   constructor(private _auth: AuthService) { }
 
-  trainerData: any = { name: '', courses: '', ict_courses_data:[]};
+  trainerCourse: any = { ict_courses_data:[]};
   trainerEmail: string | null = localStorage.getItem('trainer_email');
-  
 
   ngOnInit(): void {
 
-    
-
     /* ------ Get trainer details from db */
     this._auth.trainerProfile(this.trainerEmail)
-      .subscribe((data) => {
-        // console.log(data);
-        this.trainerData = data;
-      })
-    
-    this.events = [
-      {
-        title: this.trainerData.ict_courses_data.batch_id,
-        startdate: this.trainerData.ict_courses_data.start_date,
-        enddate: this.trainerData.ict_courses_data.end_date
-      }
+      .subscribe((data:any) => {
+        this.trainerCourse = data;      
+        
+        for(let i = 0; i<this.trainerCourse.ict_courses_data.length;i++){
+          const randomColor = Math.floor(Math.random()*16777215).toString(16);
+          this.calendarOptions.events = [        
+                {
+                  title: this.trainerCourse.ict_courses_data[i].course_id,
+                  description: this.trainerCourse.ict_courses_data[i].batch_id, 
+                  start: this.trainerCourse.ict_courses_data[i].start_date,
+                  end: this.trainerCourse.ict_courses_data[i].end_date,
+                  color: "#"+randomColor,
+                }
+          ];
+        }
 
-    ]
-  
-  }
+        });
+
+        
+        
+    }
+   
+ 
 
 }

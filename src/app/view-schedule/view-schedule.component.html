@@ -7,8 +7,27 @@
                     
                 </div>
                 <div class="card-body">
-                    
-                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Batch</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let n of trainerCourse.ict_courses_data, let i = index">
+                            <td>
+                                {{i+1}}
+                            </td>
+                            <td>
+                                {{n.course_id}}, {{n.batch_id}}
+                            </td>
+
+                            <td>
+                                {{n.time}}
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="card-footer bg-dark text-white">
 
@@ -18,13 +37,9 @@
 
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header bg-dark text-white">
-                </div>
+                
                 <div class="card-body">
                     <full-calendar [options]="calendarOptions"></full-calendar>
-                </div>
-                <div class="card-footer bg-dark text-white">
-        
                 </div>
         </div>
     
