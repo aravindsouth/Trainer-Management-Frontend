@@ -26,14 +26,15 @@ function toggleSidebar(sidebar, close) {
     }    
     else {
         sidebar.style.left = '0px';
-        sidebar.style.width = '0px';                
+        sidebar.style.width = '0px';        
         hamclicked = false;
     }
 
     close.addEventListener("click", function() {
         sidebar.style.left = '0px';
-        sidebar.style.width = '0px'; 
+        sidebar.style.width = '0px';
         close.style.display = 'none';
+          
         hamclicked = false;
     });
 
