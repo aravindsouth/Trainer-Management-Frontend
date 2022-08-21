@@ -10,6 +10,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { CourseAllocationComponent } from './course-allocation/course-allocation.component';
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
+import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { 
     path:'trainer-dashboard', component:TrainerDashboardComponent,
     children: [
-      { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" }
+      { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" },
+      { path:"view-schedule", component: ViewScheduleComponent, outlet: "trainerTarget" },
     ]
   },
   { path:'admin-dashboard', component:AdminDashboardComponent,
