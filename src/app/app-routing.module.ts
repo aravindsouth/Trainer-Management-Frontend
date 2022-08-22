@@ -11,26 +11,26 @@ import { CourseAllocationComponent } from './course-allocation/course-allocation
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
-
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path:'', redirectTo:'login', pathMatch:'full' },
   { path:'login', component:LoginComponent },
   { path:'signup', component:SignupComponent },
   { 
-    path:'trainer-dashboard', component:TrainerDashboardComponent,
+    path:'trainer-dashboard', component:TrainerDashboardComponent, canActivate: [AuthGuard],
     children: [
       { path:"enroll", component:TrainerEnrollComponent, outlet: "trainerTarget" },
       { path:"view-schedule", component: ViewScheduleComponent, outlet: "trainerTarget" },
     ]
   },
-  { path:'admin-dashboard', component:AdminDashboardComponent,
+  { path:'admin-dashboard', component:AdminDashboardComponent, canActivate: [AuthGuard],
     children: [
       { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"},
       { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
     ] },
-    { path:'trainer-view/:email', component:TrainerViewComponent },
-    {path:'update-course/:email', component:UpdateCourseComponent}
+    { path:'trainer-view/:email', component:TrainerViewComponent, canActivate: [AuthGuard] },
+    {path:'update-course/:email', component:UpdateCourseComponent, canActivate: [AuthGuard] }
 
 ];
 

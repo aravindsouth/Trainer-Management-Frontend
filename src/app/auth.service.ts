@@ -11,7 +11,7 @@ export class AuthService {
   baseUri: string = "https://trainer-management-backend.herokuapp.com/";
   constructor(private http: HttpClient, private _router: Router) { }
 
-  loggedIN() {
+  loggedIn() {
     return !!localStorage.getItem('token');
   }
 
