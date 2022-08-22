@@ -46,8 +46,16 @@ export class LoginComponent implements OnInit {
     .subscribe(
       res => {
         localStorage.setItem('token', res.token);
+        if(res.status && res.role=="trainer") {
+        localStorage.setItem('trainer_email', value.email);
         this._router.navigate(['trainer-dashboard']);
-        console.log(res.error)
+        }
+        else if(res.status && res.role=="admin"){
+          this._router.navigate(['admin-dashboard']);
+        }else {
+        console.log(res.status)
+        alert("invalid username or password")
+        }
       }
     )
 

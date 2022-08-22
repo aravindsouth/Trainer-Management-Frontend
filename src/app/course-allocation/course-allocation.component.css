@@ -1,0 +1,16 @@
+.course-alloc{
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.card-pos{
+    padding: 10px;
+}
+h5{
+    text-align: center;
+}
+
+.required-field:after {
+    content: "*";
+    color: red;
+}
