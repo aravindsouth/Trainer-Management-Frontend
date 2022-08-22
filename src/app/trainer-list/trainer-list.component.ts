@@ -22,7 +22,7 @@ export class TrainerListComponent implements OnInit {
     this._auth.getTrainers()
     .subscribe((data) => {
       this.trainers = data;
-      console.log(this.trainers)
+      // console.log(this.trainers)
     })
     
   }
