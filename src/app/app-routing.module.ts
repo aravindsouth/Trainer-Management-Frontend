@@ -11,6 +11,7 @@ import { CourseAllocationComponent } from './course-allocation/course-allocation
 import { TrainerViewComponent } from './trainer-view/trainer-view.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
+import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path:'admin-dashboard', component:AdminDashboardComponent, canActivate: [AuthGuard],
     children: [
       { path:'trainer-list', component:TrainerListComponent, outlet: "adminTarget"},
-      { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" }
+      { path:"course-allocation",component:CourseAllocationComponent, outlet: "adminTarget" },
+      { path:"admin-calendar",component:AdminCalendarComponent, outlet: "adminTarget" }
     ] },
     { path:'trainer-view/:email', component:TrainerViewComponent, canActivate: [AuthGuard] },
     {path:'update-course/:email', component:UpdateCourseComponent, canActivate: [AuthGuard] }

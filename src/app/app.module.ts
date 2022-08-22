@@ -30,6 +30,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
+import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 
 
 
@@ -46,7 +47,8 @@ import { ViewScheduleComponent } from './view-schedule/view-schedule.component';
     CourseAllocationComponent,
     TrainerViewComponent,
     UpdateCourseComponent,
-    ViewScheduleComponent
+    ViewScheduleComponent,
+    AdminCalendarComponent
   ],
   imports: [
     BrowserModule,

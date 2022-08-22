@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  // baseUri: string = "http://localhost:3000/";
-  baseUri: string = "https://trainer-management-backend.herokuapp.com/";
+  baseUri: string = "http://localhost:3000/";
+  // baseUri: string = "https://trainer-management-backend.herokuapp.com/";
   constructor(private http: HttpClient, private _router: Router) { }
 
   loggedIn() {
@@ -60,5 +60,9 @@ export class AuthService {
 
   assignEmployment(value) {
     return this.http.put<any>(this.baseUri+"trainer-update/set-employment-type", value)
+  }
+  
+  getDbStats(){
+    return this.http.get<any>(this.baseUri+"stats/db-stats")
   }
 }
