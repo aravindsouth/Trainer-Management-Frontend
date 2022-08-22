@@ -35,7 +35,7 @@ export class CourseAllocationComponent implements OnInit {
     this._auth.getTrainers()
     .subscribe((data) => {
       this.trainers = data;
-      console.log(this.trainers)
+      // console.log(this.trainers)
     })
   }
 
@@ -52,7 +52,7 @@ export class CourseAllocationComponent implements OnInit {
     }
     var year = date.getFullYear();
     this.minDate = year + "-" + month + "-" + toDate;
-    console.log(this.minDate);
+    // console.log(this.minDate);
   }
 
  
@@ -90,10 +90,14 @@ export class CourseAllocationComponent implements OnInit {
   setTrainer(trainer) {
     localStorage.setItem('trainer', trainer)
   }
+
+  courseEmail(value) {
+    console.log(value)
+  }
    
     courseAllocation(value) {
       this.courseAllocated = true;
-      console.log(value)
+      // console.log(value)
       value.email = localStorage.getItem('trainer')
       this._auth.courseAllocate(value)
       .subscribe((data) => {
