@@ -164,8 +164,8 @@
             <input type="time" class="form-control" id="coursetime" formControlName="course_time" required>
             <small *ngIf= "course_time?.invalid  && course_time?.touched" class="text-danger">Class Time required</small>
           </div>
-          <div class="input-group-sm mb-3 required-field">
-            <label for="meetlink" class="form-label">Meeting Link</label>
+          <div class="input-group-sm mb-3">
+            <label for="meetlink" class="form-label required-field">Meeting Link</label>
             <input type="text" class="form-control" id="meetlink" formControlName="meetlink" required>
             <small *ngIf= "meetlink?.invalid  && meetlink?.touched" class="text-danger">Meeting Link required</small>
           </div>
